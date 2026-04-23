@@ -1,3 +1,8 @@
+@php
+    $isRtl = in_array(app()->getLocale(), ['ar', 'fa', 'he', 'ur']);
+    $hiddenTranslateValue = $isRtl ? '-100%' : '100%';
+@endphp
+
 <div
     {{ $attributes->withoutTwMergeClasses()->twMerge('lqd-sidedrawer pointer-events-none') }}
     x-data="lqdSidedrawer"
@@ -12,8 +17,9 @@
         @click.prevent="sidedrawerOpen = false"
     ></div>
     <div
-        {{ $attributes->twMergeFor('content-wrap', 'lqd-sidedrawer-content-wrap fixed bottom-0 end-0 top-0 z-[100] w-[min(420px,85vw)] translate-x-full overflow-hidden border-s bg-background transition duration-300 ease-out overscroll-contain') }}
-        :class="{ 'translate-x-0 shadow-lg shadow-black/5': sidedrawerOpen, 'translate-x-full shadow-none': !sidedrawerOpen }"
+        {{ $attributes->twMergeFor('content-wrap', 'lqd-sidedrawer-content-wrap fixed bottom-0 end-0 top-0 z-[100] w-[min(420px,85vw)] overflow-hidden border-s bg-background transition duration-300 ease-out overscroll-contain') }}
+        :style="`transform: translateX(${sidedrawerOpen ? '0' : '{{ $hiddenTranslateValue }}'});`"
+        :class="{ 'shadow-lg shadow-black/5': sidedrawerOpen, 'shadow-none': !sidedrawerOpen }"
     >
         <div {{ $attributes->twMergeFor('content', 'lqd-sidedrawer-content h-full w-full overflow-y-auto overscroll-contain') }}>
             {{ $slot }}
