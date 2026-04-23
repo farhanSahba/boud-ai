@@ -1,9 +1,11 @@
 @php
     use App\Helpers\Classes\Localization;
+    use App\Models\SettingTwo;
 
     $supportedLocales = Localization::getSupportedLocales();
-    $defaultLanguage = $settings_two?->languages_default ?? 'en';
-    $enabledLanguages = collect(explode(',', $settings_two?->languages ?? ''))
+    $settingsTwo = SettingTwo::query()->first();
+    $defaultLanguage = $settingsTwo?->languages_default ?? 'en';
+    $enabledLanguages = collect(explode(',', $settingsTwo?->languages ?? ''))
         ->filter()
         ->values()
         ->all();
@@ -32,7 +34,7 @@
             <div class="flex flex-wrap items-center gap-3">
                 <a
                     class="inline-flex items-center justify-center gap-2 rounded-full border border-heading-foreground/10 px-5 py-3 text-2xs font-medium text-heading-foreground transition-all hover:border-heading-foreground/20 hover:bg-foreground/5"
-                    href="{{ route('dashboard.lang.reinstall') }}"
+                    href="{{ route('elseyyid.translations.lang.reinstall') }}"
                 >
                     <x-tabler-refresh class="size-4" />
                     {{ __('Reinstall Language Files') }}
@@ -58,13 +60,13 @@
 
         <div class="mb-8 grid grid-cols-1 gap-4 xl:grid-cols-2">
             <form
-                class="rounded-2xl bg-heading-foreground/[3%] p-4"
                 action="{{ route('elseyyid.translations.lang.newLang') }}"
+                class="rounded-2xl bg-heading-foreground/[3%] p-4"
                 method="GET"
                 onsubmit="return confirm('{{ __('Are you sure you want to create a new language?') }}')"
             >
                 <label class="mb-3 block text-2xs font-medium text-heading-foreground/60">
-                    {{ __('Add new language ↓') }}
+                    {{ __('Add new language') }}
                 </label>
                 <div class="flex gap-3 max-sm:flex-col">
                     <input
@@ -92,7 +94,7 @@
                             $defaultProps = $supportedLocales[$defaultLanguage] ?? null;
                             $defaultFlag = $defaultProps && ! empty($defaultProps['regional'])
                                 ? country2flag(substr($defaultProps['regional'], strrpos($defaultProps['regional'], '_') + 1))
-                                : '🌐';
+                                : strtoupper($defaultLanguage);
                         @endphp
                         <span class="text-lg">{{ $defaultFlag }}</span>
                         <span>
@@ -108,10 +110,7 @@
         </div>
 
         <div class="mb-8">
-            <form
-                action="{{ route('elseyyid.translations.lang.search') }}"
-                method="GET"
-            >
+            <form action="{{ route('elseyyid.translations.lang.search') }}" method="GET">
                 <div class="flex gap-3 max-sm:flex-col">
                     <input
                         class="w-full rounded-xl border border-input-border bg-background px-4 py-3 text-2xs outline-none transition-colors focus:border-primary"
@@ -141,7 +140,7 @@
                     $properties = $supportedLocales[$lang] ?? null;
                     $flag = $properties && ! empty($properties['regional'])
                         ? country2flag(substr($properties['regional'], strrpos($properties['regional'], '_') + 1))
-                        : '🌐';
+                        : strtoupper($lang);
                     $native = $properties['native'] ?? strtoupper($lang);
                     $isDefault = $defaultLanguage === $lang;
                     $isEnabled = in_array($lang, $enabledLanguages, true);
@@ -185,7 +184,7 @@
 
                             @if (! $isDefault)
                                 <form
-                                    action="{{ route('dashboard.lang.setLocale') }}"
+                                    action="{{ route('elseyyid.translations.lang.setLocale') }}"
                                     method="GET"
                                 >
                                     <input
