@@ -43,6 +43,8 @@
 *.zip
 *.sql
 *.tgz
+__MACOSX/
+._*
 
 /Magicai-Server-Files.zip
 /devhesabi_magicai.sql
