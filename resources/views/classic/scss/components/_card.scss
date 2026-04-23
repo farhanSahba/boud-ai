@@ -1,0 +1,52 @@
+.lqd-card-head {
+	@apply py-5;
+
+	> h4 {
+		@apply text-xl;
+	}
+}
+
+.lqd-team-overview {
+	@apply from-primary/10;
+}
+
+.lqd-statistic-card {
+
+	.lqd-card-body {
+
+		> div {
+			@apply flex-col;
+		}
+	}
+}
+
+.lqd-statistic-info {
+	@apply flex flex-col-reverse;
+}
+
+.lqd-statistic-title {
+	@apply mb-0 mt-2;
+}
+
+.lqd-statistic-change {
+	@apply text-2xl gap-2 justify-between;
+
+	.lqd-change-indicator {
+		@apply relative top-[30px];
+	}
+}
+
+.lqd-plan-overview {
+	@apply from-primary/30 to-background;
+}
+
+.lqd-card {
+	--clay: var(--background);
+}
+
+.theme-dark {
+
+	.lqd-card {
+		--border: 211 21% 25%;
+	}
+}

@@ -1,0 +1,17 @@
+{
+	"name": "social-media-agent-dashboard",
+	"extends": "default",
+	"asset-path": "themes\/social-media-agent-dashboard",
+	"dashboard": {
+		"googleFonts": {
+			"Inter+Tight": [
+				"500"
+			],
+			"Inter": [
+				"400",
+				"500",
+				"600"
+			]
+		}
+	}
+}

@@ -1,0 +1,56 @@
+.lqd-header {
+
+	.header-search {
+		@apply flex;
+
+		kbd {
+			@apply hidden;
+		}
+
+		.lqd-input-container {
+			@apply flex;
+
+			.lqd-input {
+				@apply rounded-none border-none text-base focus:ring-0 focus:border-transparent;
+			}
+		}
+
+		>div {
+
+			>span:last-of-type {
+				@apply hidden;
+			}
+		}
+	}
+}
+
+.header-search-border {
+	border-radius: 0.25rem;
+}
+
+.header-search-container {
+	@apply grow;
+}
+
+.header-search-results {
+	@apply bg-white dark:bg-background;
+}
+
+.lqd-header {
+
+	.notifications-dropdown>.lqd-dropdown-trigger,
+	.lqd-btn.lqd-focus-mode-switch,
+	.lqd-btn.lqd-light-dark-switch,
+	.header-language-dropdown .lqd-btn {
+		@apply size-10 rounded-full bg-background hover:bg-foreground hover:text-background dark:bg-foreground/10 dark:hover:bg-foreground dark:hover:text-background;
+	}
+}
+
+.header-search-border-play-inner {
+	--color-2: hsl(var(--primary));
+	--color-1: hsl(var(--secondary));
+}
+
+.lqd-header {
+	@apply shadow-sm;
+}

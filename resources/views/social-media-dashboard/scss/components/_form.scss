@@ -1,0 +1,11 @@
+.lqd-input {
+	@apply placeholder:text-heading-foreground;
+}
+
+.lqd-input-label {
+	@apply font-semibold text-xs mb-2;
+
+	&:has(.lqd-input-switcher) {
+		@apply mb-0;
+	}
+}

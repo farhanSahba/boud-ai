@@ -1,0 +1,45 @@
+body {
+	background-image: url(@themeAssets/social-media-agent-dashboard/assets/img/bg.jpg);
+	background-repeat: no-repeat;
+	background-position: top center;
+	background-size: contain;
+
+	&.lqd-page-generator-v2 {
+
+		.lqd-page-wrapper {
+			@apply lg:ps-0 lg:pe-0;
+		}
+	}
+
+	&.hide-navbar {
+
+		.lqd-page-wrapper {
+			@apply lg:ps-0;
+		}
+	}
+
+	&.is-auth-page {
+
+		.lqd-page-wrapper {
+			@apply ps-0;
+		}
+	}
+}
+
+.lqd-page-wrapper {
+	@apply lg:ps-[--navbar-fixed-width];
+}
+
+.theme-dark {
+	background-blend-mode: color;
+}
+
+@media (max-width: 576px) {
+	body {
+		background-position: top center;
+	}
+}
+
+.page-user-social-media-agent {
+	background-image: none;
+}

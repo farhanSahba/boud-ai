@@ -1,0 +1,38 @@
+.lqd-card.lqd-voiceover-generator,
+.lqd-card.lqd-video-generator,
+.lqd-card.lqd-image-generator {
+	@apply bg-card-background border border-card-border dark:bg-card-background;
+
+	.lqd-generator-advanced-trigger {
+
+		> span {
+			@apply rounded;
+		}
+	}
+
+	.lqd-input {
+		@apply bg-card-background;
+	}
+}
+
+.lqd-image-generator {
+
+	.lqd-tabs-nav {
+
+		.lqd-btn {
+			@apply hover:bg-primary/10 hover:text-primary rounded-none first:rounded-s last:rounded-e dark:hover:bg-foreground/5 dark:hover:text-foreground;
+		}
+	}
+}
+
+.lqd-video-result-actions,
+.lqd-image-result-actions {
+
+	.lqd-btn {
+		@apply bg-white dark:bg-foreground/5;
+	}
+}
+
+.lqd-generators-list {
+	@apply gap-5;
+}

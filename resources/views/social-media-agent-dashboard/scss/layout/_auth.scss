@@ -1,0 +1,30 @@
+.is-auth-page {
+
+	form {
+		@apply gap-4;
+	}
+
+	.lqd-input[type=text],
+	.lqd-input[type=email],
+	.lqd-input[type=password] {
+		@apply h-[60px];
+	}
+
+	.lqd-input-container {
+
+		&:has(.lqd-input[type=text], .lqd-input[type=email], .lqd-input[type=password]) {
+
+			label {
+				@apply hidden;
+			}
+		}
+	}
+
+	.lqd-btn[type=submit] {
+		@apply h-14 bg-gradient-to-r from-gradient-from via-gradient-via to-gradient-to;
+	}
+
+	.lqd-auth-form-foot-text {
+		@apply mt-5;
+	}
+}

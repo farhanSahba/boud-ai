@@ -1,0 +1,15 @@
+{
+	"name": "dark",
+	"extends": "default",
+	"asset-path": "themes\/dark",
+	"landingPage": {
+		"googleFonts": {
+			"Golos+Text": [
+				"400",
+				"500",
+				"600",
+				"700"
+			]
+		}
+	}
+}

@@ -1,0 +1,129 @@
+@import '../../default/scss/landing-page.scss';
+
+@layer base {
+
+	:root {
+		--background: 240 6% 10%;
+		--foreground: 0 0% 50%;
+		--primary: 170 84% 70%;
+		--primary-foreground: 0 0% 0%;
+		--secondary: 169 39% 11%;
+		--secondary-foreground: 170 84% 70%;
+		--heading-foreground: 0 0% 100%;
+		--heading-background: 0 0% 0%;
+		--gradient-from: 169 36% 41%;
+		--gradient-to: 170 84% 70%;
+
+		--font-body: 'Golos Text';
+		--font-heading: 'Golos Text';
+
+		--headings-font-weight: 700;
+
+		--h1-font-size: 5.125rem; // 82px
+		--h1-line-height: 1.195em; // 98px
+		--h1-letter-spacing: -0.0245em;
+
+		--h2-font-size: 3.5rem; // 56px
+		--h2-line-height: 1.089em; // 61px
+		--h2-letter-spacing: -0.0168em;
+
+		--h3-font-size: 2.25rem; // 36px
+		--h3-line-height: 1.194em; // 43px
+		--h3-letter-spacing: -0.01em;
+
+		--h4-font-size: 2rem; // 32px
+		--h4-font-weight: 400;
+		--h4-line-height: 1.1875em; // 38px
+		--h4-letter-spacing: -0.01em;
+
+		--h5-font-size: 1.375rem; // 22px
+		--h5-font-weight: 400;
+		--h5-line-height: 1em;
+		--h5-letter-spacing: -0.008em;
+
+		--h6-font-size: 0.8125rem; // 13px
+		--h6-font-weight: 400;
+		--h6-line-height: 1.1em; // 14px
+		--h6-letter-spacing: 0.091em;
+	}
+
+	* {
+		@apply border-heading-foreground/5;
+	}
+
+	html {
+		scroll-behavior: smooth;
+	}
+
+	body {
+		font-size: 1.125rem;
+		line-height: 1.33em;
+	}
+
+	hr {
+		@apply border-white/20;
+	}
+}
+
+@layer utilities {
+
+	.shadow-xs {
+		--tw-shadow-colored: 0 1px 2px var(--tw-shadow-color);
+	}
+	.gradient-text {
+		@apply bg-gradient-to-r from-gradient-from to-gradient-to bg-clip-text text-transparent;
+	}
+}
+
+@layer components {
+
+	.custom-templates-icon {
+
+		svg:not([fill=none]) {
+			fill: url(#custom-templates-gradient);
+		}
+		svg:not([stroke=none]):not([fill*='#']):not([fill=currentColor]) {
+			stroke: url(#custom-templates-gradient);
+		}
+	}
+}
+
+.blog-content,
+.page-content  {
+	@apply text-heading-foreground/70;
+
+	h1,
+	h2,
+	h3,
+	h4,
+	h5,
+	h6 {
+		@apply text-heading-foreground;
+	}
+
+	.highlight {
+		@apply text-black
+	}
+}
+
+@media (min-width: 1400px) {
+
+	.container {
+		min-width: 1320px;
+	}
+}
+
+@media (max-width: 768px) {
+
+	:root {
+		--h1-font-size: 5rem; // 80px
+	}
+}
+
+@media (max-width: 520px) {
+
+	:root {
+		--h1-font-size: 17vw;
+		--h2-font-size: 3rem; // 48px
+	}
+}

@@ -1,0 +1,50 @@
+.lqd-input-container {
+
+	.lqd-input {
+		@apply rounded focus:border-primary focus:ring-primary focus:ring-1;
+	}
+
+	.lqd-input-lg {
+		@apply h-12;
+	}
+
+	.lqd-input-switcher {
+		border-radius: 9999px !important;
+	}
+}
+
+.lqd-chat-form-inputs-container {
+
+	&,
+	.lqd-chat-attach,
+	.lqd-chat-templates-trigger,
+	.lqd-chat-record-trigger,
+	.lqd-chat-record-stop-trigger {
+		@apply rounded;
+	}
+
+	.lqd-input {
+		@apply focus:border-transparent focus:ring-transparent;
+	}
+}
+
+.lqd-chat-user-bubble {
+
+	.chat-content-container {
+		@apply bg-primary text-primary-foreground;
+	}
+}
+
+.chat-item-update-title,
+.chat-item-pin,
+.chat-item-delete {
+	@apply rounded;
+}
+
+.lqd-form-step {
+	@apply bg-primary/10;
+}
+
+.lqd-form-step-num {
+	@apply bg-primary text-primary-foreground;
+}

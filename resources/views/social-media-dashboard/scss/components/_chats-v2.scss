@@ -1,0 +1,78 @@
+.lqd-chat-v2 {
+
+	.chats-wrap {
+
+		.chats-list-container {
+
+			>.lqd-card-body {
+
+				>div:first-child {
+
+					>div {
+
+						>div:first-child {
+							@apply hidden;
+						}
+					}
+				}
+			}
+		}
+
+		.conversation-area-wrap,
+		.chats-list {
+			@apply bg-transparent;
+		}
+
+		.chat-list-ul {
+			@apply p-0;
+		}
+
+		.chat-list-item-actions {
+			--surface-background: var(--background);
+		}
+
+		.lqd-chat-user-bubble {
+
+			.chat-content-container {
+				@apply text-current;
+			}
+		}
+
+		.lqd-chat-ai-bubble {
+
+			.chat-content-container {
+				@apply border-none rounded-none;
+			}
+		}
+
+		.lqd-chat-form {
+			@apply rounded-full;
+		}
+	}
+
+	.chats-sidebar-wrap {
+
+		.chats-new {
+			@apply lg:block;
+
+			>div:first-child {
+				@apply invisible;
+			}
+
+			.chats-search {
+				display: block !important;
+			}
+		}
+	}
+
+	.lqd-chat-send-btn {
+		@apply text-primary-foreground;
+	}
+
+	.chats-sidebar-links {
+
+		.lqd-btn {
+			@apply text-3xs;
+		}
+	}
+}

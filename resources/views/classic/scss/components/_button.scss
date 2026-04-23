@@ -1,0 +1,57 @@
+/*
+	Start BC
+*/
+.btn {
+	--tblr-btn-border-radius: theme('spacing.1');
+}
+
+/*
+	End BC
+*/
+
+.lqd-btn {
+	@apply text-base;
+
+	&.lqd-btn-ghost-shadow {
+		@apply bg-white dark:bg-white/5;
+	}
+
+	&.lqd-btn-ghost {
+		@apply hover:bg-black/5 dark:hover:bg-white/5;
+
+	}
+}
+
+.lqd-posts-container[data-view-mode=list],
+.lqd-card {
+
+	.lqd-btn {
+
+		&.lqd-btn-ghost-shadow {
+			@apply bg-background hover:bg-primary hover:text-primary-foreground;
+		}
+	}
+
+	&#generator_sidebar_table {
+
+		.lqd-btn {
+
+			&.lqd-btn-ghost-shadow {
+				@apply bg-card-background hover:bg-primary;
+			}
+		}
+	}
+}
+
+.theme-dark {
+
+	.lqd-card {
+
+		.lqd-btn {
+
+			&.lqd-btn-ghost-shadow {
+				@apply bg-foreground/5 hover:bg-primary hover:text-primary-foreground;
+			}
+		}
+	}
+}

@@ -1,0 +1,16 @@
+.lqd-posts-container {
+
+	&[data-view-mode=list] {
+
+		>div {
+			@apply bg-card-background rounded-none shadow-card;
+		}
+	}
+
+	&[data-view-mode=grid] {
+
+		>div {
+			@apply bg-transparent border-none pt-0 shadow-none;
+		}
+	}
+}

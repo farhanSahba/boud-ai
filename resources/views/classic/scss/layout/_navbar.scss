@@ -1,0 +1,22 @@
+.lqd-navbar {
+
+	.lqd-navbar-link {
+		@apply gap-3 rounded-none dark:before:content-none dark:[&.active]:bg-navbar-foreground-active/5;
+	}
+	.lqd-navbar-item {
+		@apply mb-1;
+	}
+	.lqd-nav-link-icon {
+		@apply w-5;
+
+		svg {
+			@apply w-full;
+		}
+	}
+	.lqd-navbar-label {
+		@apply text-2xs pb-2;
+	}
+	.lqd-navbar-dropdown-link {
+		@apply dark:[&.active]:bg-transparent;
+	}
+}

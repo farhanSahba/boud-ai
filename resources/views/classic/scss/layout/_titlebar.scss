@@ -1,0 +1,17 @@
+.lqd-titlebar-subtitle {
+	@apply text-sm;
+}
+
+body:not(.focus-mode) {
+
+	.lqd-titlebar {
+		@apply border-b-0 py-10;
+
+		~ .lqd-page-content-container {
+
+			> :is(.py-10, .pt-10, .py-6, .pt-6) {
+				@apply pt-0;
+			}
+		}
+	}
+}

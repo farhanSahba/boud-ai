@@ -1,0 +1,82 @@
+@layer base {
+
+	:root {
+
+		/*
+			Start BC
+		*/
+		--tblr-border-radius: theme('spacing.1');
+		--tblr-primary: hsl(227 90% 61%);
+		/*
+			End BC
+		*/
+
+		--background: 210 40% 97%;
+		--primary: 227 90% 61%;
+		--secondary: 169 56% 45%;
+		--secondary-foreground: 0 0% 100%;
+		--border: 214 32% 91%;
+
+		--font-heading: 'Poppins';
+		--font-body: 'Poppins';
+
+		--navbar-fs: theme('fontSize.2xs');
+		--navbar-link-pt: 0.625rem;
+		--navbar-link-pe: 1rem;
+		--navbar-link-pb: 0.625rem;
+		--navbar-link-ps: 1rem;
+		--navbar-divider: 216 33% 91%;
+		--navbar-background: 0 0% 100%;
+		--navbar-foreground: 221 11% 45%;
+
+		--card-background: 0 0% 100%;
+		--folder-background: 0 0% 100%;
+
+		--header-background: 0 0% 100%;
+
+		--dropdown-background: 0 0% 100%;
+		--dropdown-rounded: 0;
+
+		--clay: 213 24% 93%;
+
+		--card-rounded: 0;
+
+		--button-rounded: 0.25rem;
+	}
+
+	.theme-dark {
+
+		/*
+			Start BC
+		*/
+		--tblr-primary: hsl(227 90% 61%);
+		/*
+			End BC
+		*/
+
+		--background: 213 26% 14%;
+		--primary: 227 90% 61%;
+		--secondary: 169 56% 45%;
+		--secondary-foreground: 0 0 100%;
+		--border: 211 21% 25%;
+
+		--navbar-background: 213 27% 19%;
+		--navbar-foreground: 218 32% 90%;
+		--navbar-background-hover: 0 0 100%;
+		--navbar-foreground-hover: 0 0% 100%;
+		--navbar-background-active: 0 0 100%;
+		--navbar-foreground-active: 0 0% 100%;
+
+		--card-background: 213 27% 19%;
+		--card-border: 211 21% 23%;
+
+		--folder-background: var(--card-background);
+
+		--dropdown-background: 213 26% 20%;
+
+		--input-background: 212 33% 17%;
+		--input-border: 211 21% 25%;
+
+		--clay: 212 33% 17%;
+	}
+}

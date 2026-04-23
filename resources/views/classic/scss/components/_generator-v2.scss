@@ -1,0 +1,39 @@
+.lqd-generator-sidebar {
+
+	.lqd-generator-item {
+		@apply rounded border shadow-sm hover:bg-primary hover:text-primary-foreground;
+
+		> span:first-child {
+			@apply bg-background;
+
+			span {
+				@apply transition-transform;
+			}
+		}
+		h4 {
+			@apply text-current;
+		}
+
+		&:hover {
+
+			> span:first-child {
+				@apply bg-primary-foreground text-primary;
+			}
+		}
+	}
+}
+
+.lqd-generator-v2 {
+	--background: 0 0% 100%;
+}
+
+.theme-dark {
+
+	.lqd-generator-v2 {
+		--background: 211 21% 23%;
+
+		.lqd-generator-item {
+			@apply bg-foreground/5 border-foreground/5 hover:bg-foreground hover:text-background;
+		}
+	}
+}
