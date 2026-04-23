@@ -1,0 +1,17 @@
+@media (min-width: theme('screens.lg')) {
+
+	.focus-mode {
+
+		.header-title-container {
+			text-align: center;
+			justify-content: center;
+		}
+
+		.header-focus-mode-nav-toggle-container {
+			order: -1;
+		}
+
+		@import './components/ai-tools-dropdown';
+		@import './components/chat';
+	}
+}

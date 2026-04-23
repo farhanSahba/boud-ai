@@ -1,0 +1,19 @@
+.lqd-chats-list {
+	@apply border-s-0;
+}
+
+.chats-wrap {
+
+	.conversation-area-wrap {
+
+		> .lqd-card-body {
+			@apply ps-0;
+		}
+	}
+
+	.lqd-chat-head,
+	.chats-container,
+	.lqd-chat-form {
+		@apply ps-10;
+	}
+}

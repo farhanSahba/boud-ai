@@ -1,0 +1,22 @@
+.lqd-chat-v2 {
+	background-image: none;
+
+	.lqd-btn-outline {
+		@apply outline-border;
+	}
+
+	.chat-content-container {
+		@apply text-heading-foreground;
+	}
+
+	.header-user-dropdown {
+
+		>.lqd-btn {
+			@apply size-[38px] shadow-none;
+		}
+	}
+
+	.lqd-chat-item-avatar {
+		@apply size-11 text-lg mb-0 after:content-none;
+	}
+}

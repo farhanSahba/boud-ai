@@ -1,0 +1,59 @@
+@import '../../default/scss/landing-page.scss';
+
+@layer base {
+
+	:root {
+		--background: 240 25% 98%;
+		--foreground: 205 12% 52%;
+		--heading-foreground: 198 57% 15%;
+		--heading-background: 0 0% 100%;
+		--primary: 198 57% 15%;
+		--primary-foreground: 0 0% 100%;
+
+		--font-body: 'Inter';
+		--font-heading: 'Outfit';
+
+		--h1-letter-spacing: -0.01em;
+
+		--h2-letter-spacing: -0.005em;
+
+		--h4-font-size: 1.25rem; //20px
+		--h4-letter-spacing: 0;
+	}
+}
+
+@media (max-width: 575px) {
+
+	:root {
+		--h2-font-size: 2.875rem;
+	}
+}
+
+@layer components {
+
+	.testimonials-main-carousel {
+
+		.flickity-page-dots {
+			@apply flex justify-center px-4;
+
+			.dot {
+				@apply m-0 h-0.5 min-w-20 bg-heading-foreground/25 rounded-none transition-colors hover:bg-heading-foreground/50 relative before:-inset-y-3 before:absolute before:start-0 before:w-full;
+
+				&.is-selected {
+					@apply bg-heading-foreground;
+				}
+			}
+		}
+	}
+}
+
+@layer utilities {
+
+	mark {
+		@apply inline-block bg-transparent text-inherit relative before:absolute before:-inset-x-2 before:bottom-0 before:bg-[#348D8F]/25 before:h-[0.3em] before:-z-1;
+	}
+
+	.text-gradient {
+		@apply text-transparent bg-gradient-to-r from-[#1D5580] via-[#84D5DE] to-[#996EBB] bg-clip-text;
+	}
+}

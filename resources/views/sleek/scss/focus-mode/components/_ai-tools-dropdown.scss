@@ -1,0 +1,10 @@
+.ai-tools-dropdown {
+
+	.lqd-navbar-link {
+
+		&:hover,
+		&.active {
+			@apply text-primary;
+		}
+	}
+}

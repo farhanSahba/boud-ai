@@ -1,0 +1,49 @@
+html,
+body {
+	height: 100vh;
+}
+
+body {
+	@apply text-sm p-[--body-padding] overflow-hidden lg:ps-0;
+	background-color: hsl(var(--body-border)) !important;
+}
+
+.lqd-page {
+	@apply h-full overflow-y-auto transition-colors rounded-t-2xl max-lg:pb-16 lg:rounded-2xl;
+}
+
+.lqd-page-content-wrap {
+	@apply bg-background lg:h-full lg:overflow-y-auto lg:rounded-s-2xl max-lg:rounded-b-2xl;
+}
+
+.lqd-page-wrapper {
+	@apply flex-wrap grow lg:overflow-hidden lg:ps-[--navbar-fixed-width];
+}
+
+.top-notice-bar-visible {
+
+	~.lqd-page {
+
+		.lg\:top-\[--body-padding\] {
+			@apply lg:top-[calc(var(--body-padding,0px)+var(--top-notice-bar-height,0px))];
+		}
+
+		.lqd-page-content-wrap {
+			@apply lg:h-[calc(100%-var(--top-notice-bar-height))];
+		}
+	}
+}
+
+.lqd-page-generator-v2,
+.page-user-ai-realtime-image,
+.page-user-advanced-image {
+	--body-padding: 0px;
+	--navbar-fixed-width: 0px;
+}
+
+.is-auth-page {
+
+	.lqd-page-wrapper {
+		@apply lg:ps-[--body-padding];
+	}
+}

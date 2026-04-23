@@ -1,0 +1,7 @@
+.header-user-dropdown {
+	@apply lg:border-s lg:ps-4;
+
+	>.lqd-dropdown-trigger {
+		@apply lg:size-9;
+	}
+}

@@ -1,0 +1,36 @@
+{
+	"name": "creative",
+	"extends": "default",
+	"asset-path": "themes\/creative",
+	"dashboard": {
+		"googleFonts": {
+			"Inter": [
+				"400",
+				"500",
+				"600"
+			],
+			"Golos+Text": [
+				"400",
+				"500",
+				"600",
+				"700"
+			]
+		}
+	},
+	"landingPage": {
+		"googleFonts": {
+			"Inter": [
+				"400",
+				"600",
+				"700",
+				"900"
+			],
+			"Golos+Text": [
+				"400",
+				"500",
+				"600",
+				"700"
+			]
+		}
+	}
+}

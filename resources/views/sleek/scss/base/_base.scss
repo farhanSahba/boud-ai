@@ -1,0 +1,16 @@
+@import './vars.scss';
+
+body {
+	background-image: url(@themeAssets/sleek/assets/img/bg/bg.png);
+	background-size: cover;
+}
+
+body:not(.focus-mode) {
+
+	.lqd-page-content-container {
+
+		> :is(.pt-10, .pt-6, .py-6, .py-10) {
+			@apply pt-2.5;
+		}
+	}
+}
