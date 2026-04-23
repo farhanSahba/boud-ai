@@ -43,6 +43,7 @@
 *.zip
 *.sql
 *.tgz
+.DS_Store
 __MACOSX/
 ._*
 
