@@ -23,6 +23,7 @@ use App\Extensions\MarketingBot\System\Http\Controllers\Webhook\WhatsappWebhookC
 use App\Extensions\MarketingBot\System\Http\Controllers\Whatsapp\ContactController;
 use App\Extensions\MarketingBot\System\Http\Controllers\Whatsapp\ContactListController;
 use App\Extensions\MarketingBot\System\Http\Controllers\Whatsapp\SegmentController;
+use App\Http\Middleware\CheckTemplateTypeAndPlan;
 use App\Extensions\MarketingBot\System\Models\MarketingCampaign;
 use App\Extensions\MarketingBot\System\Models\MarketingConversation;
 use App\Extensions\MarketingBot\System\Models\Telegram\TelegramGroup;
@@ -151,7 +152,7 @@ class MarketingBotServiceProvider extends ServiceProvider implements UninstallEx
                 'controller' => InboxController::class,
                 'prefix'     => 'dashboard/user/marketing-bot/inbox',
                 'as'         => 'dashboard.user.marketing-bot.inbox.',
-                'middleware' => ['web', 'auth'],
+                'middleware' => ['web', 'auth', CheckTemplateTypeAndPlan::class],
             ], function (Router $router) {
                 $router->get('', 'index')->name('index');
                 $router->post('conversations/name', 'name')->name('conversations.name.update');
@@ -166,7 +167,7 @@ class MarketingBotServiceProvider extends ServiceProvider implements UninstallEx
         $this->router()
             ->group([
                 'middleware' => [
-                    'web', 'auth',
+                    'web', 'auth', CheckTemplateTypeAndPlan::class,
                 ],
                 'prefix'     => 'dashboard/user/marketing-bot',
                 'as'         => 'dashboard.user.marketing-bot.',
@@ -206,7 +207,7 @@ class MarketingBotServiceProvider extends ServiceProvider implements UninstallEx
             });
         $this->router()
             ->group([
-                'middleware' => ['web', 'auth'],
+                'middleware' => ['web', 'auth', CheckTemplateTypeAndPlan::class],
                 'prefix'     => 'dashboard/user/marketing-bot/settings',
                 'as'         => 'dashboard.user.marketing-bot.settings.',
             ], function (Router $router) {

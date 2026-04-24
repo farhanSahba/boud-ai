@@ -5,6 +5,8 @@ const guest_product_id = document.getElementById( 'guest_product_id' ).value;
 let streamed_text = '';
 let streamed_message_id = 0;
 
+const getStreamType = () => typeof stream_type !== 'undefined' ? stream_type : 'frontend';
+
 function isHTML(string) {
 	return Array.from(new DOMParser().parseFromString(string, 'text/html').body.childNodes).some(({ nodeType }) => nodeType == 1);
 }
@@ -32,7 +34,7 @@ const generate = async ( message_no, creativity, maximum_length, number_of_resul
 			document.querySelector( '#workbook_regenerate' )?.classList?.remove( 'hidden' );
 			typingEl?.classList?.add( 'lqd-is-hidden' );
 			submitBtn.disabled = false;
-			if (stream_type != 'backend'){
+			if (getStreamType() != 'backend'){
 				saveResponse( prompt, result, message_no );
 			}
 
@@ -64,7 +66,7 @@ const generate = async ( message_no, creativity, maximum_length, number_of_resul
 			typingEl?.classList?.add( 'lqd-is-hidden' );
 		}
 	}, 20 );
-	if (stream_type == 'backend') {
+	if (getStreamType() == 'backend') {
 		var signal = new AbortController().signal;
 		var formData = new FormData();
 
@@ -276,6 +278,7 @@ function getTinyMCEOptions(el) {
 
 	return {
 		target: el,
+		license_key: 'gpl',
 		height: 543,
 		menubar: false,
 		statusbar: false,
@@ -1143,7 +1146,7 @@ body { padding: 3rem 2rem 0; }
 		} );
 	} );
 
-	if (stream_type == 'backend') {
+	if (getStreamType() == 'backend') {
 		window.addEventListener('beforeunload', function(e) {
 			$.ajax({
 				type: 'post',

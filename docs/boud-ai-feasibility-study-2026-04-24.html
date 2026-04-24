@@ -1,0 +1,526 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>دراسة جدوى أولية لمنصة Boud AI</title>
+    <style>
+        :root {
+            --bg: #f7f8fc;
+            --card: #ffffff;
+            --text: #171717;
+            --muted: #5f6472;
+            --line: #e6e8f0;
+            --primary: #6d28d9;
+            --primary-soft: #f3e8ff;
+            --good: #166534;
+            --good-soft: #dcfce7;
+            --warn: #92400e;
+            --warn-soft: #fef3c7;
+        }
+
+        * { box-sizing: border-box; }
+
+        body {
+            margin: 0;
+            font-family: "Segoe UI", Tahoma, Arial, sans-serif;
+            background:
+                radial-gradient(circle at top right, #efe9ff 0%, rgba(239,233,255,0) 28%),
+                linear-gradient(180deg, #fcfcff 0%, var(--bg) 100%);
+            color: var(--text);
+            line-height: 1.9;
+        }
+
+        .container {
+            width: min(1150px, calc(100% - 32px));
+            margin: 28px auto 60px;
+        }
+
+        .hero {
+            background: linear-gradient(135deg, #ffffff 0%, #faf7ff 100%);
+            border: 1px solid var(--line);
+            border-radius: 26px;
+            padding: 34px;
+            box-shadow: 0 16px 40px rgba(22, 28, 45, 0.06);
+            margin-bottom: 22px;
+        }
+
+        .hero h1 {
+            margin: 0 0 10px;
+            font-size: 38px;
+            line-height: 1.25;
+        }
+
+        .hero p {
+            margin: 0;
+            color: var(--muted);
+            font-size: 17px;
+            max-width: 900px;
+        }
+
+        .meta {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            margin-top: 18px;
+        }
+
+        .pill {
+            display: inline-flex;
+            align-items: center;
+            padding: 8px 14px;
+            border-radius: 999px;
+            background: var(--primary-soft);
+            color: var(--primary);
+            font-weight: 700;
+            font-size: 14px;
+        }
+
+        .section {
+            background: var(--card);
+            border: 1px solid var(--line);
+            border-radius: 22px;
+            padding: 28px;
+            box-shadow: 0 10px 28px rgba(22, 28, 45, 0.04);
+            margin-bottom: 18px;
+        }
+
+        h2 {
+            margin: 0 0 14px;
+            font-size: 29px;
+            line-height: 1.35;
+        }
+
+        h3 {
+            margin: 26px 0 10px;
+            font-size: 22px;
+            line-height: 1.45;
+        }
+
+        p { margin: 10px 0; }
+
+        ul {
+            margin: 10px 0;
+            padding-right: 22px;
+        }
+
+        li { margin: 7px 0; }
+
+        .callout {
+            border-radius: 18px;
+            padding: 16px 18px;
+            margin: 18px 0;
+            border: 1px solid transparent;
+        }
+
+        .callout.good {
+            background: var(--good-soft);
+            color: var(--good);
+            border-color: #bbf7d0;
+        }
+
+        .callout.warn {
+            background: var(--warn-soft);
+            color: var(--warn);
+            border-color: #fde68a;
+        }
+
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 16px;
+            margin-top: 14px;
+        }
+
+        .card {
+            background: #fff;
+            border: 1px solid var(--line);
+            border-radius: 18px;
+            padding: 18px;
+        }
+
+        .card h4 {
+            margin: 0 0 8px;
+            font-size: 20px;
+        }
+
+        .price {
+            margin: 6px 0 10px;
+            color: var(--primary);
+            font-size: 24px;
+            font-weight: 800;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            border: 1px solid var(--line);
+            border-radius: 18px;
+            overflow: hidden;
+            margin-top: 14px;
+        }
+
+        th, td {
+            padding: 14px 16px;
+            text-align: right;
+            vertical-align: top;
+            border-bottom: 1px solid var(--line);
+        }
+
+        th {
+            background: #faf5ff;
+            color: var(--primary);
+            font-size: 14px;
+        }
+
+        tr:last-child td { border-bottom: none; }
+
+        a {
+            color: var(--primary);
+            text-decoration: none;
+        }
+
+        a:hover { text-decoration: underline; }
+
+        .footer {
+            text-align: center;
+            color: var(--muted);
+            font-size: 14px;
+            margin-top: 12px;
+        }
+
+        @media (max-width: 700px) {
+            .hero { padding: 24px; }
+            .hero h1 { font-size: 30px; }
+            .section { padding: 22px; }
+            h2 { font-size: 25px; }
+            h3 { font-size: 20px; }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <section class="hero">
+            <h1>دراسة جدوى أولية لمنصة Boud AI</h1>
+            <p>
+                هذه الدراسة تجمع بين قراءة السوق السعودي والعربي، وتحليل المنافسين،
+                وفهم التكلفة التشغيلية الفعلية بناءً على مزودي الذكاء الاصطناعي الموجودين داخل المشروع،
+                ثم تترجم ذلك إلى توصية عملية حول جدوى الإطلاق، والتسعير، وترتيب الأولويات.
+            </p>
+            <div class="meta">
+                <span class="pill">24 أبريل 2026</span>
+                <span class="pill">نسخة أولية عملية</span>
+                <span class="pill">تركيز: السعودية + العالم العربي</span>
+            </div>
+        </section>
+
+        <section class="section">
+            <h2>1. الملخص التنفيذي</h2>
+            <p>
+                منصة <strong>Boud AI</strong> لديها فرصة جيدة للدخول إلى السوق السعودي والعربي،
+                لكن ليس كأداة كتابة فقط، بل كمنصة إنتاجية وتسويق محتوى شاملة.
+            </p>
+            <div class="callout good">
+                المشروع <strong>قابل تجاريًا</strong> إذا بدأ تدريجيًا، مع ضبط الخطط بحسب نوع الميزة
+                واستهلاكها الفعلي، وعدم فتح مزايا الفيديو والاستهلاك الثقيل بشكل غير محدود في الباقات المنخفضة.
+            </div>
+            <div class="callout warn">
+                الخطر الأكبر ليس في النص أو الشات، بل في <strong>الفيديو والصور المتقدمة والصوت</strong>؛
+                هذه المزايا يجب أن تُسعّر بعناية أو تُربط بخطط عليا أو إضافات مستقلة.
+            </div>
+        </section>
+
+        <section class="section">
+            <h2>2. تعريف المشروع</h2>
+            <p>المشروع يبيع قيمة عملية واضحة، وليس مجرد “وصول إلى AI”.</p>
+            <ul>
+                <li>تسريع إنتاج المحتوى</li>
+                <li>إدارة السوشال ميديا بصورة أذكى</li>
+                <li>تقليل التنقل بين أدوات كثيرة</li>
+                <li>تمكين المستخدم العربي من واجهة أوضح وأقرب لاحتياجه</li>
+            </ul>
+            <h3>الجمهور الأقرب</h3>
+            <ul>
+                <li>صناع المحتوى</li>
+                <li>المسوقون الأفراد</li>
+                <li>المتاجر الإلكترونية</li>
+                <li>الوكالات الصغيرة</li>
+                <li>فرق التسويق الداخلية في الشركات الصغيرة والمتوسطة</li>
+            </ul>
+        </section>
+
+        <section class="section">
+            <h2>3. فرصة السوق</h2>
+            <p>المؤشرات العامة في السعودية تدعم وجود فرصة حقيقية لهذا النوع من المنتجات.</p>
+            <ul>
+                <li>
+                    بحسب <a href="https://datareportal.com/reports/digital-2025-saudi-arabia">DataReportal</a>،
+                    كان هناك <strong>34.1 مليون مستخدم بالغ للسوشال ميديا</strong> في السعودية بداية 2025.
+                </li>
+                <li>
+                    بحسب <a href="https://www.monshaat.gov.sa/sites/default/files/2025-05/SME_Monitor_Q1_2025_EN.pdf">SME Monitor Q1 2025 من Monsha’at</a>،
+                    وصل إجمالي السجلات التجارية النشطة إلى <strong>1.68 مليون</strong> بنهاية الربع الأول من 2025.
+                </li>
+            </ul>
+            <p>
+                هذا يجعل السوق السعودي مناسبًا لمنصة مثل Boud AI لأنها تقف عند تقاطع:
+                المحتوى، السوشال ميديا، الإنتاجية، والذكاء الاصطناعي.
+            </p>
+        </section>
+
+        <section class="section">
+            <h2>4. المنافسون</h2>
+            <h3>4.1 منافسون عالميون أقرب لنموذج المنصة</h3>
+            <div class="grid">
+                <div class="card">
+                    <h4>Jasper</h4>
+                    <div class="price">59$ - 69$</div>
+                    <p>تموضع أعمال وفِرق. مرجع مهم إذا أردت تسعيرًا أعلى قائمًا على القيمة.</p>
+                </div>
+                <div class="card">
+                    <h4>Writesonic</h4>
+                    <div class="price">99$ - 499$</div>
+                    <p>منصة شاملة نسبيًا في المحتوى والـSEO والرؤية في محركات البحث.</p>
+                </div>
+                <div class="card">
+                    <h4>Copy.ai</h4>
+                    <div class="price">29$ / 249$</div>
+                    <p>يركز على GTM والفرق والوكلاء أكثر من كونه أداة كتابة فقط.</p>
+                </div>
+                <div class="card">
+                    <h4>Simplified</h4>
+                    <div class="price">24$+</div>
+                    <p>أقرب مرجع شامل: كتابة + تصميم + فيديو + سوشال.</p>
+                </div>
+                <div class="card">
+                    <h4>Predis.ai</h4>
+                    <div class="price">19$ - 212$</div>
+                    <p>منافس مهم جدًا إذا كان تموضعك social-first.</p>
+                </div>
+            </div>
+
+            <h3>4.2 منافسون عرب</h3>
+            <ul>
+                <li><a href="https://arwriter.ai/pricing/">ARWriter</a>: أقرب منافس عربي مباشر في المحتوى، مع تسعير منخفض نسبيًا.</li>
+                <li><a href="https://katteb.com/">Katteb</a>: منافس عربي واضح في الكتابة وSEO، لكنه أقل شمولًا من المنصة الكاملة.</li>
+            </ul>
+
+            <h3>4.3 المنافسة في السعودية</h3>
+            <p>
+                يوجد لاعبون سعوديون أو قريبون من السوق السعودي، لكن كثيرًا منهم إمّا مؤسسيون أكثر،
+                أو يغطون جزءًا من الرحلة بدل منصة شاملة self-serve.
+            </p>
+            <div class="callout good">
+                النتيجة: توجد منافسة عربية وسعودية، لكن ما زالت هناك مساحة جيدة لمنصة
+                عربية/سعودية self-serve تجمع المحتوى + السوشال + الصور + الوكلاء بشكل واضح.
+            </div>
+        </section>
+
+        <section class="section">
+            <h2>5. الوضع التقني الحالي للمشروع</h2>
+            <p>المشروع نفسه مهيأ تقنيًا ليكون أوسع من مجرد أداة كتابة.</p>
+            <table>
+                <thead>
+                    <tr>
+                        <th>الفئة</th>
+                        <th>أمثلة من المشروع</th>
+                        <th>الأثر التجاري</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>نص وشات</td>
+                        <td>OpenAI, Gemini, DeepSeek, Anthropic, OpenRouter, Perplexity</td>
+                        <td>قيمة عالية وتكلفة قابلة للإدارة</td>
+                    </tr>
+                    <tr>
+                        <td>صور</td>
+                        <td>OpenAI Images, Stable Diffusion, fal.ai, Flux, NanoBanana, SeeDream</td>
+                        <td>ميزة قوية لكن تحتاج limits واضحة</td>
+                    </tr>
+                    <tr>
+                        <td>صوت</td>
+                        <td>ElevenLabs, Azure TTS, Speechify</td>
+                        <td>مهم للخطط الأعلى أو الإضافات</td>
+                    </tr>
+                    <tr>
+                        <td>فيديو</td>
+                        <td>fal.ai, AiVideoPro, AIVideoToVideo, Creatify, HeyGen, Synthesia, Gamma</td>
+                        <td>أعلى مخاطرة على هامش الربح</td>
+                    </tr>
+                </tbody>
+            </table>
+        </section>
+
+        <section class="section">
+            <h2>6. التكاليف التشغيلية الأساسية</h2>
+            <h3>النص والشات</h3>
+            <ul>
+                <li><a href="https://openai.com/api/pricing/">OpenAI</a>: GPT-5.4 عند <strong>2.50$ / 1M input</strong> و <strong>15$ / 1M output</strong>.</li>
+                <li><a href="https://ai.google.dev/gemini-api/docs/pricing">Gemini</a>: Gemini 2.5 Pro يقارب <strong>1.25$ / 1M input</strong> و <strong>10$ / 1M output</strong>.</li>
+                <li><a href="https://api-docs.deepseek.com/quick_start/pricing/">DeepSeek</a>: <strong>0.028$ cache hit</strong> و <strong>0.28$ cache miss</strong> و <strong>0.42$ output</strong>.</li>
+                <li><a href="https://platform.claude.com/docs/en/about-claude/pricing">Anthropic</a>: Claude Sonnet 4 عند <strong>3$ input</strong> و <strong>15$ output</strong> لكل MTok.</li>
+            </ul>
+            <p>الخلاصة: النص وحده يمكن ضبطه وتسعيره براحة نسبيًا.</p>
+
+            <h3>الصوت</h3>
+            <ul>
+                <li><a href="https://elevenlabs.io/pricing/api">ElevenLabs</a>: TTS السريع <strong>0.05$ / 1000 chars</strong>، والـMultilingual <strong>0.10$ / 1000 chars</strong>.</li>
+            </ul>
+
+            <h3>الصور والفيديو</h3>
+            <ul>
+                <li><a href="https://fal.ai/pricing">fal.ai</a>: Seedream V4 عند <strong>0.03$ / image</strong>.</li>
+                <li>Flux Kontext Pro عند <strong>0.04$ / image</strong>.</li>
+                <li>Nanobanana عند <strong>0.0398$ / image</strong>.</li>
+                <li>Wan 2.5 عند <strong>0.05$ / second</strong>.</li>
+                <li>Kling 2.5 Turbo Pro عند <strong>0.07$ / second</strong>.</li>
+                <li>Veo 3 عند <strong>0.40$ / second</strong>.</li>
+            </ul>
+            <div class="callout warn">
+                النص رخيص نسبيًا. الصور متوسطة التكلفة. أما الفيديو فهو أكبر مصدر خطر على هامش الربح،
+                لذلك يجب ألا يكون غير محدود في الباقات الأولى.
+            </div>
+        </section>
+
+        <section class="section">
+            <h2>7. القراءة المالية</h2>
+            <p>المنصة عندك فيها نوعان من التكلفة:</p>
+            <ul>
+                <li><strong>تكاليف ثابتة:</strong> سيرفرات، بريد، مراقبة، دعم، صيانة، تشغيل.</li>
+                <li><strong>تكاليف متغيرة:</strong> نص، صور، صوت، فيديو.</li>
+            </ul>
+            <h3>تقدير مبسط لطبيعة المستخدمين</h3>
+            <table>
+                <thead>
+                    <tr>
+                        <th>نوع المستخدم</th>
+                        <th>الاستخدام</th>
+                        <th>مستوى المخاطرة</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>نصي خفيف</td>
+                        <td>شات + كتابة</td>
+                        <td>منخفض</td>
+                    </tr>
+                    <tr>
+                        <td>محتوى + صور</td>
+                        <td>شات + كتابة + صور</td>
+                        <td>متوسط</td>
+                    </tr>
+                    <tr>
+                        <td>فيديو ثقيل</td>
+                        <td>فيديو + صور + وكلاء</td>
+                        <td>مرتفع جدًا</td>
+                    </tr>
+                </tbody>
+            </table>
+        </section>
+
+        <section class="section">
+            <h2>8. نموذج العمل المقترح</h2>
+            <p>الأنسب هو نموذج متعدد الطبقات، لا خطة واحدة شاملة لكل شيء.</p>
+            <div class="grid">
+                <div class="card">
+                    <h4>Free</h4>
+                    <div class="price">0 ريال</div>
+                    <p>تجربة محدودة جدًا للشات والكتابة وبعض الصور.</p>
+                </div>
+                <div class="card">
+                    <h4>Creator</h4>
+                    <div class="price">79 - 99 ريال</div>
+                    <p>مناسب لصناع المحتوى الأفراد: نص + صور + سوشال أساسي.</p>
+                </div>
+                <div class="card">
+                    <h4>Pro</h4>
+                    <div class="price">199 - 299 ريال</div>
+                    <p>مناسب للمسوقين والمتاجر والفرق الصغيرة.</p>
+                </div>
+                <div class="card">
+                    <h4>Agency / Business</h4>
+                    <div class="price">499 - 999 ريال</div>
+                    <p>مناسب للوكالات والفرق والاستخدامات الأثقل.</p>
+                </div>
+            </div>
+            <div class="callout good">
+                التوصية الأقوى: اجعل الفيديو، والصوت المتقدم، وبعض الوكلاء
+                ضمن الخطط العليا أو كـ Add-ons منفصلة.
+            </div>
+        </section>
+
+        <section class="section">
+            <h2>9. المخاطر</h2>
+            <h3>مخاطر تجارية</h3>
+            <ul>
+                <li>تموضع غير واضح: هل أنت أداة كتابة أم منصة شاملة؟</li>
+                <li>مقارنة المستخدم لك بأدوات أرخص متخصصة جدًا.</li>
+            </ul>
+            <h3>مخاطر تشغيلية</h3>
+            <ul>
+                <li>استنزاف هامش الربح عبر الفيديو.</li>
+                <li>كثرة المزودين تحتاج ضبطًا تشغيليًا جيدًا.</li>
+            </ul>
+            <h3>مخاطر تسويقية</h3>
+            <ul>
+                <li>إظهار كل المزايا لكل المستخدمين من البداية.</li>
+                <li>بيع “كل شيء” بدل بيع “حل واضح” لكل شريحة.</li>
+            </ul>
+        </section>
+
+        <section class="section">
+            <h2>10. الحكم النهائي</h2>
+            <div class="callout good">
+                <strong>المشروع مجدٍ مبدئيًا</strong> إذا تم إطلاقه بشكل تدريجي،
+                وربط المزايا والخطط والحدود بطريقة ذكية.
+            </div>
+            <p>أهم ما يجب الالتزام به:</p>
+            <ul>
+                <li>لا تطلق كل المزايا لكل الخطط.</li>
+                <li>اجعل النص والشات أساس الخطط الأولى.</li>
+                <li>اجعل الصور محدودة بوضوح.</li>
+                <li>اجعل الفيديو مدفوعًا بوضوح أو ضمن الخطط العليا فقط.</li>
+            </ul>
+        </section>
+
+        <section class="section">
+            <h2>11. التوصية التالية</h2>
+            <p>الخطوة التالية المنطقية ليست البرمجة مباشرة، بل:</p>
+            <ol>
+                <li>تحديد الخطط التجارية بدقة</li>
+                <li>تحديد المزايا التي تدخل في كل خطة</li>
+                <li>تحديد ما يظهر لكل مشترك وما يُمنع عنه</li>
+                <li>تحديد ما يكون Add-on منفصلًا</li>
+            </ol>
+            <div class="callout warn">
+                أفضل نقاش تالٍ بعد هذه الدراسة هو: <strong>تصميم الخطط والباقات</strong>،
+                وليس فقط “إخفاء أو إظهار الإضافات”.
+            </div>
+        </section>
+
+        <section class="section">
+            <h2>12. المصادر</h2>
+            <ul>
+                <li><a href="https://datareportal.com/reports/digital-2025-saudi-arabia">DataReportal - Digital 2025 Saudi Arabia</a></li>
+                <li><a href="https://www.monshaat.gov.sa/sites/default/files/2025-05/SME_Monitor_Q1_2025_EN.pdf">Monsha’at SME Monitor Q1 2025</a></li>
+                <li><a href="https://www.jasper.ai/pricing">Jasper Pricing</a></li>
+                <li><a href="https://writesonic.com/pricing">Writesonic Pricing</a></li>
+                <li><a href="https://support.copy.ai/en/articles/6544134-pricing">Copy.ai Pricing</a></li>
+                <li><a href="https://simplified.com/pricing">Simplified Pricing</a></li>
+                <li><a href="https://predis.ai/pricing/">Predis Pricing</a></li>
+                <li><a href="https://arwriter.ai/pricing/">ARWriter Pricing</a></li>
+                <li><a href="https://katteb.com/">Katteb</a></li>
+                <li><a href="https://openai.com/api/pricing/">OpenAI API Pricing</a></li>
+                <li><a href="https://ai.google.dev/gemini-api/docs/pricing">Gemini API Pricing</a></li>
+                <li><a href="https://api-docs.deepseek.com/quick_start/pricing/">DeepSeek Pricing</a></li>
+                <li><a href="https://platform.claude.com/docs/en/about-claude/pricing">Anthropic Pricing</a></li>
+                <li><a href="https://elevenlabs.io/pricing/api">ElevenLabs API Pricing</a></li>
+                <li><a href="https://fal.ai/pricing">fal.ai Pricing</a></li>
+            </ul>
+        </section>
+
+        <p class="footer">أُعد هذا الملف كنسخة عملية أولية لاتخاذ القرار، وليس كنموذج مالي مدقق أو خطة استثمار نهائية.</p>
+    </div>
+</body>
+</html>

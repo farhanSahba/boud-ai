@@ -12,6 +12,7 @@ use App\Extensions\BlogPilot\System\Console\Commands\SeedDemoDataCommand;
 use App\Extensions\BlogPilot\System\Http\Controllers\BlogPilotController;
 use App\Extensions\BlogPilot\System\Models\BlogPilot;
 use App\Extensions\BlogPilot\System\Policies\BlogPilotPolicy;
+use App\Http\Middleware\CheckTemplateTypeAndPlan;
 use Illuminate\Console\Scheduling\Schedule;
 use Illuminate\Contracts\Http\Kernel;
 use Illuminate\Routing\Router;
@@ -98,7 +99,7 @@ class BlogPilotServiceProvider extends ServiceProvider implements ExtensionRegis
 
         $this->router()
             ->group([
-                'middleware' => ['web', 'auth'],
+                'middleware' => ['web', 'auth', CheckTemplateTypeAndPlan::class],
             ], function (Router $router) {
                 $router
                     ->name('dashboard.user.blogpilot.agent.')

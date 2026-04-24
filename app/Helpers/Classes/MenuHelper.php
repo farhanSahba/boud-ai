@@ -73,6 +73,15 @@ class MenuHelper
         'influencer_avatar',
         'brand_voice',
         'support',
+        'ext_blogpilot_dropdown',
+        'ext_social_media_agent_dropdown',
+        'marketing_bot',
+        'marketing_bot_dashboard',
+        'marketing_bot_settings',
+        'marketing_bot_inbox',
+        'marketing_bot_campaigns',
+        'marketing_bot_telegram',
+        'marketing_bot_whatsapp',
     ];
 
     public function __construct()
@@ -130,7 +139,11 @@ class MenuHelper
                 return true;
             }
 
-            return $openAi?->getAttribute('premium') !== 1;
+            if ($openAi) {
+                return $openAi->getAttribute('premium') !== 1;
+            }
+
+            return false;
         }
 
         if ($openAi || in_array($slug, $this->slugsNotInOpenAiGenerator, true)) {

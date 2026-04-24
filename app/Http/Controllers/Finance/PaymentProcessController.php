@@ -95,17 +95,17 @@ class PaymentProcessController extends Controller
     {
         $activeSub = getCurrentActiveSubscription();
         if ($activeSub) {
-            $activesubid = $activeSub->id;
+            $activePlanId = $activeSub->plan_id;
         } else {
             $activeSub_yokassa = getCurrentActiveSubscriptionYokkasa();
             if ($activeSub_yokassa) {
-                $activesubid = $activeSub_yokassa->id;
+                $activePlanId = $activeSub_yokassa->plan_id;
             } else {
-                $activesubid = 0; // id can't be zero, so this will be easy to check instead of null
+                $activePlanId = 0; // plan id can't be zero, so this will be easy to check instead of null
             }
         }
 
-        return $activesubid === $planId;
+        return $activePlanId === $planId;
     }
 
     public function startSubscriptionProcess($planId, $gatewayCode)
@@ -683,10 +683,17 @@ class PaymentProcessController extends Controller
             }
         }
         if ($activeSub) {
+            $isFreeServiceSubscription = $activeSub->paid_with === 'freeservice'
+                || $activeSub->stripe_price === 'Not Needed';
+
             $priceArray = GatewayProducts::all()->pluck('price_id')->toArray();
             // if some plan cancelation happens when appling coupon then add the custom product price_id to custom bilings table
             $customPriceArray = CustomBilingPlans::all()->pluck('custom_plan_price_id')->toArray();
-            if (in_array($activeSub->stripe_price, $priceArray, true) || in_array($activeSub->stripe_price, $customPriceArray, true)) {
+            if (
+                $isFreeServiceSubscription
+                || in_array($activeSub->stripe_price, $priceArray, true)
+                || in_array($activeSub->stripe_price, $customPriceArray, true)
+            ) {
                 // Do nothing. This is what we want.
             } else {
                 // Cancel subscription
@@ -702,7 +709,7 @@ class PaymentProcessController extends Controller
             // getSubscriptionStatus function is already called on subscription status file. BUT after functions which gives errors,
             // this needs priority, that's why we add here too. Also this function updates database as cancelled if can't find in gateway
             // there are webhooks for paypal and stripe and paystack
-            if ($gateway !== 'paypal' && $gateway !== 'stripe' && $gateway !== 'paystack') {
+            if (! $isFreeServiceSubscription && $gateway !== 'paypal' && $gateway !== 'stripe' && $gateway !== 'paystack') {
                 $isValid = false;
 
                 try {

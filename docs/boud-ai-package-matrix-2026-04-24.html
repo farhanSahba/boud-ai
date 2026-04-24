@@ -1,0 +1,570 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>الجدول التنفيذي النهائي لباقات Boud AI</title>
+    <style>
+        :root {
+            --bg: #f6f7fb;
+            --card: #ffffff;
+            --text: #171717;
+            --muted: #5e6777;
+            --line: #e8ebf3;
+            --primary: #6d28d9;
+            --primary-soft: #f3e8ff;
+            --primary-deep: #4c1d95;
+            --good: #166534;
+            --good-soft: #dcfce7;
+            --warn: #92400e;
+            --warn-soft: #fef3c7;
+            --danger: #991b1b;
+            --danger-soft: #fee2e2;
+            --shadow: 0 18px 42px rgba(22, 28, 45, 0.06);
+        }
+
+        * { box-sizing: border-box; }
+
+        body {
+            margin: 0;
+            font-family: "Segoe UI", Tahoma, Arial, sans-serif;
+            color: var(--text);
+            line-height: 1.85;
+            background:
+                radial-gradient(circle at top right, #ede9fe 0%, rgba(237,233,254,0) 28%),
+                linear-gradient(180deg, #fcfcff 0%, var(--bg) 100%);
+        }
+
+        .container {
+            width: min(1280px, calc(100% - 30px));
+            margin: 28px auto 60px;
+        }
+
+        .hero,
+        .section,
+        .summary,
+        .decision {
+            background: var(--card);
+            border: 1px solid var(--line);
+            border-radius: 24px;
+            box-shadow: var(--shadow);
+        }
+
+        .hero {
+            padding: 34px;
+            background: linear-gradient(135deg, #ffffff 0%, #faf7ff 100%);
+            margin-bottom: 20px;
+        }
+
+        .hero h1 {
+            margin: 0 0 12px;
+            font-size: 38px;
+            line-height: 1.25;
+        }
+
+        .hero p {
+            margin: 0;
+            max-width: 940px;
+            color: var(--muted);
+            font-size: 17px;
+        }
+
+        .meta {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            margin-top: 18px;
+        }
+
+        .pill {
+            display: inline-flex;
+            align-items: center;
+            padding: 8px 14px;
+            border-radius: 999px;
+            background: var(--primary-soft);
+            color: var(--primary);
+            font-weight: 700;
+            font-size: 14px;
+        }
+
+        .section,
+        .summary,
+        .decision {
+            padding: 28px;
+            margin-bottom: 18px;
+        }
+
+        h2 {
+            margin: 0 0 16px;
+            font-size: 29px;
+        }
+
+        h3 {
+            margin: 0 0 12px;
+            font-size: 21px;
+        }
+
+        p,
+        li {
+            font-size: 16px;
+        }
+
+        .muted {
+            color: var(--muted);
+        }
+
+        .grid-2,
+        .grid-3,
+        .grid-4 {
+            display: grid;
+            gap: 18px;
+        }
+
+        .grid-2 { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+        .grid-3 { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+        .grid-4 { grid-template-columns: repeat(4, minmax(0, 1fr)); }
+
+        .card {
+            border: 1px solid var(--line);
+            border-radius: 20px;
+            padding: 20px;
+            background: #fff;
+        }
+
+        .card strong {
+            color: var(--primary-deep);
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 14px;
+            border-radius: 18px;
+            overflow: hidden;
+        }
+
+        th,
+        td {
+            border-bottom: 1px solid var(--line);
+            padding: 14px 12px;
+            text-align: start;
+            vertical-align: top;
+            font-size: 14px;
+        }
+
+        th {
+            background: #faf8ff;
+            color: var(--primary-deep);
+            font-weight: 800;
+        }
+
+        tr:last-child td {
+            border-bottom: none;
+        }
+
+        .tag {
+            display: inline-flex;
+            align-items: center;
+            padding: 6px 10px;
+            border-radius: 999px;
+            font-size: 12px;
+            font-weight: 800;
+            white-space: nowrap;
+        }
+
+        .open { background: var(--good-soft); color: var(--good); }
+        .limited { background: var(--warn-soft); color: var(--warn); }
+        .addon { background: var(--primary-soft); color: var(--primary); }
+        .hidden { background: #eef2f7; color: #475569; }
+        .admin { background: var(--danger-soft); color: var(--danger); }
+
+        ul {
+            margin: 0;
+            padding-inline-start: 18px;
+        }
+
+        .footer {
+            color: var(--muted);
+            font-size: 14px;
+            text-align: center;
+            margin-top: 12px;
+        }
+
+        @media (max-width: 1080px) {
+            .grid-4 { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+            .grid-3 { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+        }
+
+        @media (max-width: 760px) {
+            .container { width: min(100% - 20px, 1280px); }
+            .hero, .section, .summary, .decision { padding: 22px; }
+            .hero h1 { font-size: 31px; }
+            .grid-4, .grid-3, .grid-2 { grid-template-columns: 1fr; }
+            table, thead, tbody, th, td, tr { display: block; }
+            thead { display: none; }
+            tr {
+                border: 1px solid var(--line);
+                border-radius: 18px;
+                padding: 10px 0;
+                margin-bottom: 12px;
+                background: #fff;
+            }
+            td {
+                border: none;
+                padding: 8px 14px;
+            }
+            td::before {
+                content: attr(data-label);
+                display: block;
+                color: var(--muted);
+                font-size: 13px;
+                margin-bottom: 4px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <section class="hero">
+            <h1>الجدول التنفيذي النهائي لباقات Boud AI</h1>
+            <p>
+                هذا الملف يحول هيكلة الباقات إلى نموذج تنفيذي مرتبط فعلًا بالموديولات الموجودة داخل المشروع،
+                بحيث نعرف ما الذي يدخل في كل باقة، وما الذي يبقى Add-on، وما الذي يجب أن يظل للإدارة فقط.
+            </p>
+            <div class="meta">
+                <span class="pill">تاريخ الإعداد: 24 أبريل 2026</span>
+                <span class="pill">الهدف: ربط الباقات بالمزايا الموجودة فعليًا</span>
+                <span class="pill">الاستخدام: مرجع القرار قبل التنفيذ داخل المنصة</span>
+            </div>
+        </section>
+
+        <section class="summary">
+            <h2>1. القاعدة التنفيذية</h2>
+            <div class="grid-4">
+                <div class="card">
+                    <h3>Core</h3>
+                    <p class="muted">الشات، الكتابة، المستندات، القوالب.</p>
+                </div>
+                <div class="card">
+                    <h3>Media</h3>
+                    <p class="muted">الصور، العروض، الموسيقى، الفيديو.</p>
+                </div>
+                <div class="card">
+                    <h3>Social</h3>
+                    <p class="muted">السوشال، النشر، الوكلاء، التسويق.</p>
+                </div>
+                <div class="card">
+                    <h3>Business & Premium</h3>
+                    <p class="muted">القنوات، الأعمال، التكاملات، المزايا الأعلى تكلفة.</p>
+                </div>
+            </div>
+        </section>
+
+        <section class="section">
+            <h2>2. مفاتيح الجدول</h2>
+            <div class="grid-3">
+                <div class="card"><span class="tag open">مفتوح</span><p class="muted">متاح ضمن الباقة مباشرة.</p></div>
+                <div class="card"><span class="tag limited">محدود</span><p class="muted">متاح لكن بحدود أو نسخة أخف.</p></div>
+                <div class="card"><span class="tag addon">Add-on</span><p class="muted">يباع منفصلًا عن الباقة الأساسية.</p></div>
+                <div class="card"><span class="tag hidden">مخفي</span><p class="muted">لا يظهر للمستخدم في هذه الباقة.</p></div>
+                <div class="card"><span class="tag admin">إدارة فقط</span><p class="muted">لا يخص المستخدم النهائي.</p></div>
+            </div>
+        </section>
+
+        <section class="section">
+            <h2>3. الجدول التنفيذي المرتبط بالموديولات</h2>
+            <table>
+                <thead>
+                    <tr>
+                        <th>الفئة</th>
+                        <th>الموديول / الميزة</th>
+                        <th>Free</th>
+                        <th>Creator</th>
+                        <th>Pro</th>
+                        <th>Agency</th>
+                        <th>الملاحظة التنفيذية</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td data-label="الفئة">Core</td>
+                        <td data-label="الموديول / الميزة"><strong>AIChatPro</strong></td>
+                        <td data-label="Free"><span class="tag limited">محدود</span></td>
+                        <td data-label="Creator"><span class="tag open">مفتوح</span></td>
+                        <td data-label="Pro"><span class="tag open">مفتوح</span></td>
+                        <td data-label="Agency"><span class="tag open">مفتوح</span></td>
+                        <td data-label="الملاحظة التنفيذية">أساس المنتج ويجب أن يكون مدخلًا لكل الخطط.</td>
+                    </tr>
+                    <tr>
+                        <td data-label="الفئة">Core</td>
+                        <td data-label="الموديول / الميزة"><strong>AIChatProFileChat</strong></td>
+                        <td data-label="Free"><span class="tag hidden">مخفي</span></td>
+                        <td data-label="Creator"><span class="tag limited">محدود</span></td>
+                        <td data-label="Pro"><span class="tag open">مفتوح</span></td>
+                        <td data-label="Agency"><span class="tag open">مفتوح</span></td>
+                        <td data-label="الملاحظة التنفيذية">أفضل ربطه من Creator أو Pro حسب الضغط الفعلي.</td>
+                    </tr>
+                    <tr>
+                        <td data-label="الفئة">Core</td>
+                        <td data-label="الموديول / الميزة"><strong>AIChatProFolders</strong></td>
+                        <td data-label="Free"><span class="tag hidden">مخفي</span></td>
+                        <td data-label="Creator"><span class="tag open">مفتوح</span></td>
+                        <td data-label="Pro"><span class="tag open">مفتوح</span></td>
+                        <td data-label="Agency"><span class="tag open">مفتوح</span></td>
+                        <td data-label="الملاحظة التنفيذية">ميزة تنظيمية لا تكلّف كثيرًا.</td>
+                    </tr>
+                    <tr>
+                        <td data-label="الفئة">Core</td>
+                        <td data-label="الموديول / الميزة"><strong>AiChatProImageChat</strong></td>
+                        <td data-label="Free"><span class="tag hidden">مخفي</span></td>
+                        <td data-label="Creator"><span class="tag limited">محدود</span></td>
+                        <td data-label="Pro"><span class="tag open">مفتوح</span></td>
+                        <td data-label="Agency"><span class="tag open">مفتوح</span></td>
+                        <td data-label="الملاحظة التنفيذية">يدعم شات الصور دون فتح كامل الصور المتقدمة.</td>
+                    </tr>
+                    <tr>
+                        <td data-label="الفئة">Core</td>
+                        <td data-label="الموديول / الميزة"><strong>AIChatProMemory</strong></td>
+                        <td data-label="Free"><span class="tag hidden">مخفي</span></td>
+                        <td data-label="Creator"><span class="tag hidden">مخفي</span></td>
+                        <td data-label="Pro"><span class="tag limited">محدود</span></td>
+                        <td data-label="Agency"><span class="tag open">مفتوح</span></td>
+                        <td data-label="الملاحظة التنفيذية">ميزة متقدمة أنسب للخطط الأعلى.</td>
+                    </tr>
+                    <tr>
+                        <td data-label="الفئة">Core</td>
+                        <td data-label="الموديول / الميزة"><strong>AIWriterTemplates / ContentManager / Canvas / ChatShare / FocusMode</strong></td>
+                        <td data-label="Free"><span class="tag limited">محدود</span></td>
+                        <td data-label="Creator"><span class="tag open">مفتوح</span></td>
+                        <td data-label="Pro"><span class="tag open">مفتوح</span></td>
+                        <td data-label="Agency"><span class="tag open">مفتوح</span></td>
+                        <td data-label="الملاحظة التنفيذية">هذه هي حزمة الإنتاجية اليومية للمحتوى.</td>
+                    </tr>
+                    <tr>
+                        <td data-label="الفئة">Core</td>
+                        <td data-label="الموديول / الميزة"><strong>MultiModel / OpenRouter / Perplexity / AzureOpenai</strong></td>
+                        <td data-label="Free"><span class="tag hidden">مخفي</span></td>
+                        <td data-label="Creator"><span class="tag limited">محدود</span></td>
+                        <td data-label="Pro"><span class="tag open">مفتوح</span></td>
+                        <td data-label="Agency"><span class="tag open">مفتوح</span></td>
+                        <td data-label="الملاحظة التنفيذية">نطاق مزودين متعددين أفضل تسويقه كميزة Pro فما فوق.</td>
+                    </tr>
+                    <tr>
+                        <td data-label="الفئة">Media</td>
+                        <td data-label="الموديول / الميزة"><strong>AIImagePro / AdvancedImage / AIRealtimeImage</strong></td>
+                        <td data-label="Free"><span class="tag limited">محدود</span></td>
+                        <td data-label="Creator"><span class="tag open">مفتوح</span></td>
+                        <td data-label="Pro"><span class="tag open">مفتوح</span></td>
+                        <td data-label="Agency"><span class="tag open">مفتوح</span></td>
+                        <td data-label="الملاحظة التنفيذية">الصور الأساسية تدخل من Creator، مع حدود مختلفة حسب الخطة.</td>
+                    </tr>
+                    <tr>
+                        <td data-label="الفئة">Media</td>
+                        <td data-label="الموديول / الميزة"><strong>FluxPro / NanoBanana / SeeDreamV4 / Midjourney</strong></td>
+                        <td data-label="Free"><span class="tag hidden">مخفي</span></td>
+                        <td data-label="Creator"><span class="tag addon">Add-on</span></td>
+                        <td data-label="Pro"><span class="tag limited">محدود</span></td>
+                        <td data-label="Agency"><span class="tag open">مفتوح</span></td>
+                        <td data-label="الملاحظة التنفيذية">هذه أفضل ضمن Premium Image Add-on أو في الخطط العليا.</td>
+                    </tr>
+                    <tr>
+                        <td data-label="الفئة">Media</td>
+                        <td data-label="الموديول / الميزة"><strong>AiPresentation</strong></td>
+                        <td data-label="Free"><span class="tag hidden">مخفي</span></td>
+                        <td data-label="Creator"><span class="tag limited">محدود</span></td>
+                        <td data-label="Pro"><span class="tag open">مفتوح</span></td>
+                        <td data-label="Agency"><span class="tag open">مفتوح</span></td>
+                        <td data-label="الملاحظة التنفيذية">مفيد للمحترفين والمتاجر والعروض التجارية.</td>
+                    </tr>
+                    <tr>
+                        <td data-label="الفئة">Media</td>
+                        <td data-label="الموديول / الميزة"><strong>AiMusic / AiMusicPro / AiAvatar / AiPersona / InfluencerAvatar / FashionStudio / ProductPhotography</strong></td>
+                        <td data-label="Free"><span class="tag hidden">مخفي</span></td>
+                        <td data-label="Creator"><span class="tag addon">Add-on</span></td>
+                        <td data-label="Pro"><span class="tag limited">محدود</span></td>
+                        <td data-label="Agency"><span class="tag open">مفتوح</span></td>
+                        <td data-label="الملاحظة التنفيذية">مزايا متخصصة، لا أنصح بإدخالها كلها في الباقات الدنيا.</td>
+                    </tr>
+                    <tr>
+                        <td data-label="الفئة">Media</td>
+                        <td data-label="الموديول / الميزة"><strong>AiVideoPro / AIVideoToVideo / AiViralClips / UrlToVideo</strong></td>
+                        <td data-label="Free"><span class="tag hidden">مخفي</span></td>
+                        <td data-label="Creator"><span class="tag addon">Add-on</span></td>
+                        <td data-label="Pro"><span class="tag addon">Add-on</span></td>
+                        <td data-label="Agency"><span class="tag limited">محدود</span></td>
+                        <td data-label="الملاحظة التنفيذية">الفيديو يجب أن يبقى خارج الباقات الأساسية غالبًا.</td>
+                    </tr>
+                    <tr>
+                        <td data-label="الفئة">Media</td>
+                        <td data-label="الموديول / الميزة"><strong>ElevenLabsVoiceChat / AzureTTS / AIVoiceIsolator</strong></td>
+                        <td data-label="Free"><span class="tag hidden">مخفي</span></td>
+                        <td data-label="Creator"><span class="tag addon">Add-on</span></td>
+                        <td data-label="Pro"><span class="tag addon">Add-on</span></td>
+                        <td data-label="Agency"><span class="tag limited">محدود</span></td>
+                        <td data-label="الملاحظة التنفيذية">يدخل ضمن Voice Add-on.</td>
+                    </tr>
+                    <tr>
+                        <td data-label="الفئة">Social</td>
+                        <td data-label="الموديول / الميزة"><strong>AISocialMedia / SocialMedia / BlogPilot / SEOTool</strong></td>
+                        <td data-label="Free"><span class="tag hidden">مخفي</span></td>
+                        <td data-label="Creator"><span class="tag limited">محدود</span></td>
+                        <td data-label="Pro"><span class="tag open">مفتوح</span></td>
+                        <td data-label="Agency"><span class="tag open">مفتوح</span></td>
+                        <td data-label="الملاحظة التنفيذية">هذا هو العمود الفقري لتسويق المحتوى في الباقات المتوسطة.</td>
+                    </tr>
+                    <tr>
+                        <td data-label="الفئة">Social</td>
+                        <td data-label="الموديول / الميزة"><strong>SocialMediaAgent / MarketingBot</strong></td>
+                        <td data-label="Free"><span class="tag hidden">مخفي</span></td>
+                        <td data-label="Creator"><span class="tag hidden">مخفي</span></td>
+                        <td data-label="Pro"><span class="tag limited">محدود</span></td>
+                        <td data-label="Agency"><span class="tag open">مفتوح</span></td>
+                        <td data-label="الملاحظة التنفيذية">أنسب تموضع لها هو Pro وما فوق، مع أفضلية واضحة لـAgency.</td>
+                    </tr>
+                    <tr>
+                        <td data-label="الفئة">Social</td>
+                        <td data-label="الموديول / الميزة"><strong>Wordpress / Mailchimp / Hubspot / Newsletter</strong></td>
+                        <td data-label="Free"><span class="tag hidden">مخفي</span></td>
+                        <td data-label="Creator"><span class="tag hidden">مخفي</span></td>
+                        <td data-label="Pro"><span class="tag limited">محدود</span></td>
+                        <td data-label="Agency"><span class="tag open">مفتوح</span></td>
+                        <td data-label="الملاحظة التنفيذية">تكاملات تسويقية وتجارية أفضل ربطها بالباقات الأعلى.</td>
+                    </tr>
+                    <tr>
+                        <td data-label="الفئة">Business</td>
+                        <td data-label="الموديول / الميزة"><strong>Whatsapp / Telegram / Inbox / Campaigns</strong></td>
+                        <td data-label="Free"><span class="tag hidden">مخفي</span></td>
+                        <td data-label="Creator"><span class="tag hidden">مخفي</span></td>
+                        <td data-label="Pro"><span class="tag limited">محدود</span></td>
+                        <td data-label="Agency"><span class="tag open">مفتوح</span></td>
+                        <td data-label="الملاحظة التنفيذية">هذه مزايا أعمال وليست مزايا تجربة فردية.</td>
+                    </tr>
+                    <tr>
+                        <td data-label="الفئة">Business</td>
+                        <td data-label="الموديول / الميزة"><strong>Chatbot + القنوات (Instagram / Messenger / Whatsapp / Telegram)</strong></td>
+                        <td data-label="Free"><span class="tag hidden">مخفي</span></td>
+                        <td data-label="Creator"><span class="tag hidden">مخفي</span></td>
+                        <td data-label="Pro"><span class="tag addon">Add-on</span></td>
+                        <td data-label="Agency"><span class="tag limited">محدود</span></td>
+                        <td data-label="الملاحظة التنفيذية">أنصح باعتباره منتجًا جانبيًا أو Add-on بدل فتحه للجميع.</td>
+                    </tr>
+                    <tr>
+                        <td data-label="الفئة">Premium</td>
+                        <td data-label="الموديول / الميزة"><strong>ChatbotAgent / OpenAIRealtimeChat / AIWebChat</strong></td>
+                        <td data-label="Free"><span class="tag hidden">مخفي</span></td>
+                        <td data-label="Creator"><span class="tag addon">Add-on</span></td>
+                        <td data-label="Pro"><span class="tag limited">محدود</span></td>
+                        <td data-label="Agency"><span class="tag open">مفتوح</span></td>
+                        <td data-label="الملاحظة التنفيذية">هذه مزايا قوية لكن تحتاج تموضعًا تجاريًا أعلى.</td>
+                    </tr>
+                    <tr>
+                        <td data-label="الفئة">Premium</td>
+                        <td data-label="الموديول / الميزة"><strong>AIPlagiarism</strong></td>
+                        <td data-label="Free"><span class="tag hidden">مخفي</span></td>
+                        <td data-label="Creator"><span class="tag limited">محدود</span></td>
+                        <td data-label="Pro"><span class="tag open">مفتوح</span></td>
+                        <td data-label="Agency"><span class="tag open">مفتوح</span></td>
+                        <td data-label="الملاحظة التنفيذية">مفيد في المحتوى الاحترافي ويمكن توظيفه كميزة جودة.</td>
+                    </tr>
+                    <tr>
+                        <td data-label="الفئة">إدارة</td>
+                        <td data-label="الموديول / الميزة"><strong>Announcement / DiscountManager / Menu / MegaMenu / LiveCustomizer / Maintenance / Cloudflare / Cryptomus / Xero / Migration</strong></td>
+                        <td data-label="Free"><span class="tag admin">إدارة فقط</span></td>
+                        <td data-label="Creator"><span class="tag admin">إدارة فقط</span></td>
+                        <td data-label="Pro"><span class="tag admin">إدارة فقط</span></td>
+                        <td data-label="Agency"><span class="tag admin">إدارة فقط</span></td>
+                        <td data-label="الملاحظة التنفيذية">هذه ليست مزايا عميل نهائي أصلًا.</td>
+                    </tr>
+                </tbody>
+            </table>
+        </section>
+
+        <section class="section">
+            <h2>4. الترجمة المباشرة للباقات</h2>
+            <div class="grid-2">
+                <div class="card">
+                    <h3>Free</h3>
+                    <ul>
+                        <li>AI Chat أساسي</li>
+                        <li>AI Writing أساسي</li>
+                        <li>Templates محدودة</li>
+                        <li>صور قليلة</li>
+                        <li>بدون سوشال متقدم أو فيديو أو وكلاء</li>
+                    </ul>
+                </div>
+                <div class="card">
+                    <h3>Creator</h3>
+                    <ul>
+                        <li>أدوات المحتوى الأساسية كاملة</li>
+                        <li>صور عملية</li>
+                        <li>بعض السوشال وSEO وBlogPilot</li>
+                        <li>بدون فيديو ثقيل أو وكلاء متقدمين</li>
+                    </ul>
+                </div>
+                <div class="card">
+                    <h3>Pro</h3>
+                    <ul>
+                        <li>سوشال أوسع</li>
+                        <li>وكلاء أساسيون</li>
+                        <li>بعض أدوات التسويق والقنوات</li>
+                        <li>إمكانية شراء Add-ons الثقيلة</li>
+                    </ul>
+                </div>
+                <div class="card">
+                    <h3>Agency</h3>
+                    <ul>
+                        <li>أغلب الأدوات</li>
+                        <li>Marketing + Social + Agents بشكل أوسع</li>
+                        <li>حدود أعلى وتشغيل أعمق</li>
+                        <li>الفيديو الثقيل يظل بحدود أو Add-on</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <section class="section">
+            <h2>5. الإضافات المدفوعة المقترحة</h2>
+            <div class="grid-4">
+                <div class="card">
+                    <h3>Video Add-on</h3>
+                    <p class="muted">AiVideoPro, AIVideoToVideo, AiViralClips, UrlToVideo</p>
+                </div>
+                <div class="card">
+                    <h3>Voice Add-on</h3>
+                    <p class="muted">ElevenLabsVoiceChat, AzureTTS, AIVoiceIsolator</p>
+                </div>
+                <div class="card">
+                    <h3>Premium Image Add-on</h3>
+                    <p class="muted">FluxPro, NanoBanana, SeeDreamV4, Midjourney</p>
+                </div>
+                <div class="card">
+                    <h3>Bot / Channels Add-on</h3>
+                    <p class="muted">Chatbot, AIWebChat, WhatsApp, Telegram, Messenger, Instagram</p>
+                </div>
+            </div>
+        </section>
+
+        <section class="decision">
+            <h2>6. القرار التنفيذي النهائي</h2>
+            <p>
+                أفضل نقطة انطلاق عملية لمنصتك هي:
+            </p>
+            <ul>
+                <li><strong>Free</strong> للتجربة والتحويل</li>
+                <li><strong>Creator</strong> للأفراد وصناع المحتوى</li>
+                <li><strong>Pro</strong> للمحترفين والمتاجر</li>
+                <li><strong>Agency</strong> للوكالات والفرق</li>
+                <li><strong>Add-ons</strong> للفيديو والصوت والصور المميزة والقنوات</li>
+            </ul>
+            <p class="muted">
+                القاعدة الذهبية: الإضافات موجودة داخل المشروع، لكن ما يراه العميل وما يستخدمه يجب أن يُحدد بالخطة،
+                لا بمجرد وجود الملفات داخل النظام.
+            </p>
+        </section>
+
+        <p class="footer">
+            الخطوة التالية بعد اعتماد هذا الجدول: بناء جدول ربط نهائي لكل خطة مع القوائم والصفحات والصلاحيات والحدود.
+        </p>
+    </div>
+</body>
+</html>

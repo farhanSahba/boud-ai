@@ -1,6 +1,5 @@
 @php
-    $isRtl = in_array(app()->getLocale(), ['ar', 'fa', 'he', 'ur']);
-    $hiddenTranslateValue = $isRtl ? '-100%' : '100%';
+    $hiddenTranslateValue = '100%';
 @endphp
 
 <div

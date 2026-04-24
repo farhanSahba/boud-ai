@@ -1,0 +1,490 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>جدول الربط التطبيقي داخل منصة Boud AI</title>
+    <style>
+        :root {
+            --bg: #f7f8fc;
+            --card: #ffffff;
+            --text: #171717;
+            --muted: #5e6777;
+            --line: #e8ebf3;
+            --primary: #6d28d9;
+            --primary-soft: #f3e8ff;
+            --primary-deep: #4c1d95;
+            --good: #166534;
+            --good-soft: #dcfce7;
+            --warn: #92400e;
+            --warn-soft: #fef3c7;
+            --danger: #991b1b;
+            --danger-soft: #fee2e2;
+            --shadow: 0 18px 42px rgba(22, 28, 45, 0.06);
+        }
+
+        * { box-sizing: border-box; }
+
+        body {
+            margin: 0;
+            font-family: "Segoe UI", Tahoma, Arial, sans-serif;
+            color: var(--text);
+            line-height: 1.85;
+            background:
+                radial-gradient(circle at top right, #ede9fe 0%, rgba(237,233,254,0) 28%),
+                linear-gradient(180deg, #fcfcff 0%, var(--bg) 100%);
+        }
+
+        .container {
+            width: min(1260px, calc(100% - 30px));
+            margin: 28px auto 60px;
+        }
+
+        .hero,
+        .section,
+        .decision,
+        .summary {
+            background: var(--card);
+            border: 1px solid var(--line);
+            border-radius: 24px;
+            box-shadow: var(--shadow);
+        }
+
+        .hero {
+            padding: 34px;
+            margin-bottom: 20px;
+            background: linear-gradient(135deg, #ffffff 0%, #faf7ff 100%);
+        }
+
+        .hero h1 {
+            margin: 0 0 12px;
+            font-size: 38px;
+            line-height: 1.25;
+        }
+
+        .hero p {
+            margin: 0;
+            max-width: 940px;
+            color: var(--muted);
+            font-size: 17px;
+        }
+
+        .meta {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            margin-top: 18px;
+        }
+
+        .pill {
+            display: inline-flex;
+            align-items: center;
+            padding: 8px 14px;
+            border-radius: 999px;
+            background: var(--primary-soft);
+            color: var(--primary);
+            font-weight: 700;
+            font-size: 14px;
+        }
+
+        .section,
+        .decision,
+        .summary {
+            padding: 28px;
+            margin-bottom: 18px;
+        }
+
+        h2 {
+            margin: 0 0 16px;
+            font-size: 29px;
+        }
+
+        h3 {
+            margin: 0 0 12px;
+            font-size: 21px;
+        }
+
+        p,
+        li {
+            font-size: 16px;
+        }
+
+        .muted {
+            color: var(--muted);
+        }
+
+        .grid-2,
+        .grid-3,
+        .grid-4 {
+            display: grid;
+            gap: 18px;
+        }
+
+        .grid-2 { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+        .grid-3 { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+        .grid-4 { grid-template-columns: repeat(4, minmax(0, 1fr)); }
+
+        .card {
+            border: 1px solid var(--line);
+            border-radius: 20px;
+            padding: 20px;
+            background: #fff;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 14px;
+            border-radius: 18px;
+            overflow: hidden;
+        }
+
+        th,
+        td {
+            border-bottom: 1px solid var(--line);
+            padding: 14px 12px;
+            text-align: start;
+            vertical-align: top;
+            font-size: 14px;
+        }
+
+        th {
+            background: #faf8ff;
+            color: var(--primary-deep);
+            font-weight: 800;
+        }
+
+        tr:last-child td {
+            border-bottom: none;
+        }
+
+        .tag {
+            display: inline-flex;
+            align-items: center;
+            padding: 6px 10px;
+            border-radius: 999px;
+            font-size: 12px;
+            font-weight: 800;
+            white-space: nowrap;
+        }
+
+        .open { background: var(--good-soft); color: var(--good); }
+        .limited { background: var(--warn-soft); color: var(--warn); }
+        .upgrade { background: var(--primary-soft); color: var(--primary); }
+        .hidden { background: #eef2f7; color: #475569; }
+        .admin { background: var(--danger-soft); color: var(--danger); }
+
+        ul {
+            margin: 0;
+            padding-inline-start: 18px;
+        }
+
+        .footer {
+            color: var(--muted);
+            font-size: 14px;
+            text-align: center;
+            margin-top: 12px;
+        }
+
+        @media (max-width: 1080px) {
+            .grid-4 { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+            .grid-3 { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+        }
+
+        @media (max-width: 760px) {
+            .container { width: min(100% - 20px, 1260px); }
+            .hero, .section, .decision, .summary { padding: 22px; }
+            .hero h1 { font-size: 31px; }
+            .grid-4, .grid-3, .grid-2 { grid-template-columns: 1fr; }
+            table, thead, tbody, th, td, tr { display: block; }
+            thead { display: none; }
+            tr {
+                border: 1px solid var(--line);
+                border-radius: 18px;
+                padding: 10px 0;
+                margin-bottom: 12px;
+                background: #fff;
+            }
+            td {
+                border: none;
+                padding: 8px 14px;
+            }
+            td::before {
+                content: attr(data-label);
+                display: block;
+                color: var(--muted);
+                font-size: 13px;
+                margin-bottom: 4px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <section class="hero">
+            <h1>جدول الربط التطبيقي داخل منصة Boud AI</h1>
+            <p>
+                هذا الملف يوضح كيف ستتصرف المنصة فعليًا مع كل مشترك حسب خطته:
+                ما الذي يراه، وما الذي يفتحه، وما الذي يستهلكه، ومتى تظهر له الترقية.
+            </p>
+            <div class="meta">
+                <span class="pill">تاريخ الإعداد: 24 أبريل 2026</span>
+                <span class="pill">الهدف: من النظرية إلى التطبيق داخل المنصة</span>
+                <span class="pill">مرجع قرار قبل التنفيذ الفعلي</span>
+            </div>
+        </section>
+
+        <section class="summary">
+            <h2>1. الطبقات الأربع لكل ميزة</h2>
+            <div class="grid-4">
+                <div class="card">
+                    <h3>الظهور</h3>
+                    <p class="muted">هل تظهر في القوائم والواجهة أصلًا؟</p>
+                </div>
+                <div class="card">
+                    <h3>الدخول</h3>
+                    <p class="muted">إذا عرف المستخدم الرابط، هل يدخل أم لا؟</p>
+                </div>
+                <div class="card">
+                    <h3>الاستخدام</h3>
+                    <p class="muted">إذا دخل، هل يسمح له بالتنفيذ أم تظهر له ترقية؟</p>
+                </div>
+                <div class="card">
+                    <h3>الاستهلاك</h3>
+                    <p class="muted">إذا استخدم، هل يملك حدًا أو كريدتًا كافيًا؟</p>
+                </div>
+            </div>
+        </section>
+
+        <section class="section">
+            <h2>2. أنواع القرار داخل المنصة</h2>
+            <div class="grid-3">
+                <div class="card"><span class="tag open">ظاهر ومفتوح</span><p class="muted">يراه ويستخدمه بشكل طبيعي.</p></div>
+                <div class="card"><span class="tag limited">ظاهر لكن محدود</span><p class="muted">يراه ويفتحه لكن ضمن حدود أو نسخة أخف.</p></div>
+                <div class="card"><span class="tag upgrade">ظاهر كترقية</span><p class="muted">يراه لكن يحتاج خطة أعلى أو Add-on.</p></div>
+                <div class="card"><span class="tag hidden">مخفي</span><p class="muted">لا يظهر له أصلًا.</p></div>
+                <div class="card"><span class="tag admin">إدارة فقط</span><p class="muted">ليس موجهًا للعميل النهائي.</p></div>
+            </div>
+        </section>
+
+        <section class="section">
+            <h2>3. جدول الظهور في القوائم</h2>
+            <table>
+                <thead>
+                    <tr>
+                        <th>العنصر</th>
+                        <th>Free</th>
+                        <th>Creator</th>
+                        <th>Pro</th>
+                        <th>Agency</th>
+                        <th>طريقة التعامل</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td data-label="العنصر"><strong>Dashboard / Documents / AI Writer / AI Chat</strong></td>
+                        <td data-label="Free"><span class="tag open">يظهر</span></td>
+                        <td data-label="Creator"><span class="tag open">يظهر</span></td>
+                        <td data-label="Pro"><span class="tag open">يظهر</span></td>
+                        <td data-label="Agency"><span class="tag open">يظهر</span></td>
+                        <td data-label="طريقة التعامل">أساس المنتج ولا يُبنى الاشتراك من دونه.</td>
+                    </tr>
+                    <tr>
+                        <td data-label="العنصر"><strong>Creative Suite / AI Image / BlogPilot / SEO</strong></td>
+                        <td data-label="Free"><span class="tag hidden">مخفي</span></td>
+                        <td data-label="Creator"><span class="tag limited">يظهر محدود</span></td>
+                        <td data-label="Pro"><span class="tag open">يظهر</span></td>
+                        <td data-label="Agency"><span class="tag open">يظهر</span></td>
+                        <td data-label="طريقة التعامل">نطاق الإبداع والإنتاج يبدأ من Creator.</td>
+                    </tr>
+                    <tr>
+                        <td data-label="العنصر"><strong>Social Media / AI Social Media</strong></td>
+                        <td data-label="Free"><span class="tag hidden">مخفي</span></td>
+                        <td data-label="Creator"><span class="tag limited">يظهر محدود</span></td>
+                        <td data-label="Pro"><span class="tag open">يظهر</span></td>
+                        <td data-label="Agency"><span class="tag open">يظهر</span></td>
+                        <td data-label="طريقة التعامل">بداية اجتماعية في Creator وتشغيل فعلي في Pro.</td>
+                    </tr>
+                    <tr>
+                        <td data-label="العنصر"><strong>Social Media Agent / Marketing Bot</strong></td>
+                        <td data-label="Free"><span class="tag hidden">مخفي</span></td>
+                        <td data-label="Creator"><span class="tag hidden">مخفي</span></td>
+                        <td data-label="Pro"><span class="tag upgrade">ترقية أو محدود</span></td>
+                        <td data-label="Agency"><span class="tag open">يظهر</span></td>
+                        <td data-label="طريقة التعامل">تمييز مهم للخطط الأعلى.</td>
+                    </tr>
+                    <tr>
+                        <td data-label="العنصر"><strong>Chatbots / WhatsApp / Telegram / Inbox / Campaigns</strong></td>
+                        <td data-label="Free"><span class="tag hidden">مخفي</span></td>
+                        <td data-label="Creator"><span class="tag hidden">مخفي</span></td>
+                        <td data-label="Pro"><span class="tag upgrade">Add-on</span></td>
+                        <td data-label="Agency"><span class="tag limited">يظهر محدود</span></td>
+                        <td data-label="طريقة التعامل">أفضل ربطها بالأعمال أو كمنتج جانبي.</td>
+                    </tr>
+                    <tr>
+                        <td data-label="العنصر"><strong>Marketplace / Themes / Migration / Settings الإدارية</strong></td>
+                        <td data-label="Free"><span class="tag admin">إدارة فقط</span></td>
+                        <td data-label="Creator"><span class="tag admin">إدارة فقط</span></td>
+                        <td data-label="Pro"><span class="tag admin">إدارة فقط</span></td>
+                        <td data-label="Agency"><span class="tag admin">إدارة فقط</span></td>
+                        <td data-label="طريقة التعامل">لا يجب أن يراها العميل أصلًا.</td>
+                    </tr>
+                </tbody>
+            </table>
+        </section>
+
+        <section class="section">
+            <h2>4. جدول الوصول إلى الصفحات</h2>
+            <table>
+                <thead>
+                    <tr>
+                        <th>نوع الصفحة</th>
+                        <th>Free</th>
+                        <th>Creator</th>
+                        <th>Pro</th>
+                        <th>Agency</th>
+                        <th>القرار</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td data-label="نوع الصفحة">المستندات والكتابة</td>
+                        <td data-label="Free"><span class="tag open">مسموح</span></td>
+                        <td data-label="Creator"><span class="tag open">مسموح</span></td>
+                        <td data-label="Pro"><span class="tag open">مسموح</span></td>
+                        <td data-label="Agency"><span class="tag open">مسموح</span></td>
+                        <td data-label="القرار">أساسي</td>
+                    </tr>
+                    <tr>
+                        <td data-label="نوع الصفحة">الصور الأساسية</td>
+                        <td data-label="Free"><span class="tag limited">محدود</span></td>
+                        <td data-label="Creator"><span class="tag open">مسموح</span></td>
+                        <td data-label="Pro"><span class="tag open">مسموح</span></td>
+                        <td data-label="Agency"><span class="tag open">مسموح</span></td>
+                        <td data-label="القرار">حسب كريدت الصور</td>
+                    </tr>
+                    <tr>
+                        <td data-label="نوع الصفحة">السوشال الأساسي</td>
+                        <td data-label="Free"><span class="tag hidden">ممنوع</span></td>
+                        <td data-label="Creator"><span class="tag limited">محدود</span></td>
+                        <td data-label="Pro"><span class="tag open">مسموح</span></td>
+                        <td data-label="Agency"><span class="tag open">مسموح</span></td>
+                        <td data-label="القرار">يرتبط بالخطة</td>
+                    </tr>
+                    <tr>
+                        <td data-label="نوع الصفحة">Social Media Agent / Marketing Bot</td>
+                        <td data-label="Free"><span class="tag hidden">ممنوع</span></td>
+                        <td data-label="Creator"><span class="tag hidden">ممنوع</span></td>
+                        <td data-label="Pro"><span class="tag upgrade">ترقية</span></td>
+                        <td data-label="Agency"><span class="tag open">مسموح</span></td>
+                        <td data-label="القرار">ميزة عليا</td>
+                    </tr>
+                    <tr>
+                        <td data-label="نوع الصفحة">الفيديو</td>
+                        <td data-label="Free"><span class="tag hidden">ممنوع</span></td>
+                        <td data-label="Creator"><span class="tag upgrade">Add-on</span></td>
+                        <td data-label="Pro"><span class="tag upgrade">Add-on</span></td>
+                        <td data-label="Agency"><span class="tag limited">محدود</span></td>
+                        <td data-label="القرار">لا يفتح مجانيًا</td>
+                    </tr>
+                    <tr>
+                        <td data-label="نوع الصفحة">الصوت المتقدم</td>
+                        <td data-label="Free"><span class="tag hidden">ممنوع</span></td>
+                        <td data-label="Creator"><span class="tag upgrade">Add-on</span></td>
+                        <td data-label="Pro"><span class="tag upgrade">Add-on</span></td>
+                        <td data-label="Agency"><span class="tag limited">محدود</span></td>
+                        <td data-label="القرار">ضمن Voice Add-on</td>
+                    </tr>
+                </tbody>
+            </table>
+        </section>
+
+        <section class="section">
+            <h2>5. منطق الاستهلاك والحدود</h2>
+            <div class="grid-4">
+                <div class="card">
+                    <h3>Free</h3>
+                    <ul>
+                        <li>كلمات منخفضة جدًا</li>
+                        <li>صور منخفضة جدًا</li>
+                        <li>مستندات محدودة</li>
+                        <li>بدون فيديو وصوت متقدم</li>
+                    </ul>
+                </div>
+                <div class="card">
+                    <h3>Creator</h3>
+                    <ul>
+                        <li>كلمات متوسطة</li>
+                        <li>صور متوسطة</li>
+                        <li>سوشال أساسي</li>
+                        <li>بدون فيديو ثقيل</li>
+                    </ul>
+                </div>
+                <div class="card">
+                    <h3>Pro</h3>
+                    <ul>
+                        <li>كلمات عالية</li>
+                        <li>صور أعلى</li>
+                        <li>Social أوسع</li>
+                        <li>Agent / Marketing محدود</li>
+                    </ul>
+                </div>
+                <div class="card">
+                    <h3>Agency</h3>
+                    <ul>
+                        <li>حدود أعلى جدًا</li>
+                        <li>قنوات وأعمال أوسع</li>
+                        <li>وكلاء وسوشال بشكل أوسع</li>
+                        <li>الفيديو يبقى بحد أو Add-on</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <section class="section">
+            <h2>6. متى نظهر الترقية؟</h2>
+            <div class="grid-2">
+                <div class="card">
+                    <h3>نظهر الترقية عندما</h3>
+                    <ul>
+                        <li>يدخل المستخدم صفحة أعلى من خطته</li>
+                        <li>يرى ميزة قريبة من احتياجه لكن لا يملكها</li>
+                        <li>يصل إلى الحد الشهري</li>
+                        <li>يحتاج Add-on منفصل</li>
+                    </ul>
+                </div>
+                <div class="card">
+                    <h3>نخفي الميزة عندما</h3>
+                    <ul>
+                        <li>تكون بعيدة جدًا عن شريحته</li>
+                        <li>تربك المستخدم المجاني</li>
+                        <li>تكلفتها عالية ولا نريد حتى عرضها له الآن</li>
+                        <li>لا تمثل قيمة واضحة في مرحلة التجربة</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <section class="decision">
+            <h2>7. الخلاصة التنفيذية</h2>
+            <p>
+                المنصة يجب أن تُدار بهذه القاعدة:
+            </p>
+            <ul>
+                <li>ليست كل الإضافات لكل المستخدمين</li>
+                <li>كل خطة لها واجهة مختلفة منطقيًا</li>
+                <li>كل خطة لها وصول مختلف</li>
+                <li>كل خطة لها استهلاك مختلف</li>
+                <li>الترقية وAdd-ons جزء من تصميم المنتج لا مجرد تسعير</li>
+            </ul>
+            <p class="muted">
+                الخطوة التالية بعد هذا الملف: بناء خريطة ربط تنفيذية أدق بين كل خطة وبين عناصر السايدبار والمسارات والكريدت ورسائل الترقية داخل المشروع.
+            </p>
+        </section>
+
+        <p class="footer">
+            هذا الملف هو الحلقة التي تربط بين دراسة الجدوى، وهيكلة الباقات، والتنفيذ الفعلي داخل المنتج.
+        </p>
+    </div>
+</body>
+</html>

@@ -1,0 +1,687 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>هيكلة الباقات المقترحة لمنصة Boud AI</title>
+    <style>
+        :root {
+            --bg: #f6f7fb;
+            --card: #ffffff;
+            --text: #171717;
+            --muted: #5c6474;
+            --line: #e7eaf2;
+            --primary: #6d28d9;
+            --primary-soft: #f3e8ff;
+            --primary-deep: #4c1d95;
+            --good: #166534;
+            --good-soft: #dcfce7;
+            --warn: #92400e;
+            --warn-soft: #fef3c7;
+            --shadow: 0 16px 40px rgba(22, 28, 45, 0.06);
+        }
+
+        * { box-sizing: border-box; }
+
+        body {
+            margin: 0;
+            font-family: "Segoe UI", Tahoma, Arial, sans-serif;
+            color: var(--text);
+            line-height: 1.85;
+            background:
+                radial-gradient(circle at top right, #ede9fe 0%, rgba(237,233,254,0) 28%),
+                linear-gradient(180deg, #fcfcff 0%, var(--bg) 100%);
+        }
+
+        .container {
+            width: min(1180px, calc(100% - 32px));
+            margin: 30px auto 64px;
+        }
+
+        .hero,
+        .section,
+        .note,
+        .matrix,
+        .launch,
+        .decision {
+            background: var(--card);
+            border: 1px solid var(--line);
+            border-radius: 24px;
+            box-shadow: var(--shadow);
+        }
+
+        .hero {
+            padding: 34px;
+            margin-bottom: 22px;
+            background: linear-gradient(135deg, #ffffff 0%, #faf7ff 100%);
+        }
+
+        .hero h1 {
+            margin: 0 0 12px;
+            font-size: 38px;
+            line-height: 1.25;
+        }
+
+        .hero p {
+            margin: 0;
+            color: var(--muted);
+            font-size: 17px;
+            max-width: 920px;
+        }
+
+        .meta {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            margin-top: 18px;
+        }
+
+        .pill {
+            display: inline-flex;
+            align-items: center;
+            padding: 8px 14px;
+            border-radius: 999px;
+            background: var(--primary-soft);
+            color: var(--primary);
+            font-weight: 700;
+            font-size: 14px;
+        }
+
+        .section {
+            padding: 28px;
+            margin-bottom: 18px;
+        }
+
+        h2 {
+            margin: 0 0 16px;
+            font-size: 28px;
+        }
+
+        h3 {
+            margin: 0 0 12px;
+            font-size: 21px;
+        }
+
+        h4 {
+            margin: 0 0 10px;
+            font-size: 18px;
+        }
+
+        p,
+        li {
+            font-size: 16px;
+        }
+
+        .muted {
+            color: var(--muted);
+        }
+
+        .grid-2,
+        .grid-3,
+        .grid-4 {
+            display: grid;
+            gap: 18px;
+        }
+
+        .grid-2 { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+        .grid-3 { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+        .grid-4 { grid-template-columns: repeat(4, minmax(0, 1fr)); }
+
+        .segment,
+        .addon,
+        .phase,
+        .rule {
+            border: 1px solid var(--line);
+            border-radius: 20px;
+            padding: 20px;
+            background: #fff;
+        }
+
+        .segment {
+            background: linear-gradient(180deg, #ffffff 0%, #fafaff 100%);
+        }
+
+        .package-card {
+            border: 1px solid var(--line);
+            border-radius: 24px;
+            padding: 24px;
+            background: #fff;
+            display: flex;
+            flex-direction: column;
+            gap: 14px;
+        }
+
+        .package-card.highlight {
+            border-color: rgba(109, 40, 217, 0.25);
+            background: linear-gradient(180deg, #fbf8ff 0%, #ffffff 100%);
+            box-shadow: 0 22px 50px rgba(109, 40, 217, 0.08);
+        }
+
+        .package-head {
+            display: flex;
+            align-items: start;
+            justify-content: space-between;
+            gap: 12px;
+        }
+
+        .package-name {
+            font-size: 28px;
+            font-weight: 800;
+            margin: 0;
+        }
+
+        .badge {
+            display: inline-flex;
+            align-items: center;
+            padding: 7px 12px;
+            border-radius: 999px;
+            font-size: 13px;
+            font-weight: 700;
+        }
+
+        .badge.primary {
+            background: var(--primary-soft);
+            color: var(--primary);
+        }
+
+        .badge.good {
+            background: var(--good-soft);
+            color: var(--good);
+        }
+
+        .price {
+            font-size: 30px;
+            font-weight: 800;
+            color: var(--primary-deep);
+        }
+
+        .price small {
+            font-size: 14px;
+            color: var(--muted);
+            font-weight: 600;
+        }
+
+        ul {
+            margin: 0;
+            padding-inline-start: 18px;
+        }
+
+        .subtle-list li {
+            margin-bottom: 7px;
+        }
+
+        .note {
+            padding: 22px 24px;
+            margin-bottom: 18px;
+            border-inline-start: 6px solid #f59e0b;
+            background: linear-gradient(180deg, #fffef9 0%, #ffffff 100%);
+        }
+
+        .note h3 {
+            color: var(--warn);
+        }
+
+        .matrix,
+        .launch,
+        .decision {
+            padding: 26px;
+            margin-bottom: 18px;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 14px;
+            overflow: hidden;
+            border-radius: 18px;
+        }
+
+        th,
+        td {
+            border-bottom: 1px solid var(--line);
+            padding: 15px 14px;
+            text-align: start;
+            vertical-align: top;
+            font-size: 15px;
+        }
+
+        th {
+            background: #faf8ff;
+            color: var(--primary-deep);
+            font-weight: 800;
+        }
+
+        tr:last-child td {
+            border-bottom: none;
+        }
+
+        .kpi {
+            display: grid;
+            gap: 14px;
+            grid-template-columns: repeat(4, minmax(0, 1fr));
+            margin-top: 16px;
+        }
+
+        .kpi-card {
+            border: 1px solid var(--line);
+            border-radius: 18px;
+            padding: 18px;
+            background: #fff;
+        }
+
+        .kpi-card strong {
+            display: block;
+            font-size: 20px;
+            margin-bottom: 6px;
+            color: var(--primary-deep);
+        }
+
+        .footer {
+            color: var(--muted);
+            font-size: 14px;
+            text-align: center;
+            margin-top: 18px;
+        }
+
+        @media (max-width: 980px) {
+            .grid-4 { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+            .grid-3 { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+            .grid-2,
+            .kpi { grid-template-columns: 1fr; }
+            .package-head { flex-direction: column; }
+        }
+
+        @media (max-width: 680px) {
+            .container { width: min(100% - 20px, 1180px); }
+            .hero, .section, .matrix, .launch, .decision, .note { padding: 22px; }
+            .hero h1 { font-size: 31px; }
+            .grid-4, .grid-3 { grid-template-columns: 1fr; }
+            table, thead, tbody, th, td, tr { display: block; }
+            thead { display: none; }
+            tr {
+                border: 1px solid var(--line);
+                border-radius: 18px;
+                padding: 10px 0;
+                margin-bottom: 12px;
+                background: #fff;
+            }
+            td {
+                border: none;
+                padding: 8px 14px;
+            }
+            td::before {
+                content: attr(data-label);
+                display: block;
+                color: var(--muted);
+                font-size: 13px;
+                margin-bottom: 4px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <section class="hero">
+            <h1>هيكلة الباقات المقترحة لمنصة Boud AI</h1>
+            <p>
+                هذه الوثيقة تحول دراسة الجدوى إلى نموذج اشتراكات عملي، بحيث تكون المنصة واضحة للمستخدم،
+                متوازنة ماليًا، وقابلة للتطبيق داخل المنتج لاحقًا على مستوى الظهور والوصول والاستهلاك.
+            </p>
+            <div class="meta">
+                <span class="pill">تاريخ الإعداد: 24 أبريل 2026</span>
+                <span class="pill">السوق المستهدف: السعودية والعالم العربي</span>
+                <span class="pill">الهدف: بناء هيكل باقات قابل للبيع والتنفيذ</span>
+            </div>
+        </section>
+
+        <section class="section">
+            <h2>1. المبدأ الأساسي</h2>
+            <div class="grid-3">
+                <div class="rule">
+                    <h3>ليس كل شيء لكل شخص</h3>
+                    <p class="muted">كل شريحة تحصل على القيمة التي تناسب احتياجها، بدل فتح المنصة بالكامل للجميع.</p>
+                </div>
+                <div class="rule">
+                    <h3>المزايا الثقيلة لا تُعطى مجانًا</h3>
+                    <p class="muted">الفيديو والصوت المتقدم والوكلاء الأفضل ربطهم بخطط أعلى أو إضافات مدفوعة.</p>
+                </div>
+                <div class="rule">
+                    <h3>المنصة تُدار بالخطط لا بالفوضى</h3>
+                    <p class="muted">كل باقة لها هوية واضحة، بدل قائمة مزايا متداخلة لا يفهمها العميل.</p>
+                </div>
+            </div>
+        </section>
+
+        <section class="section">
+            <h2>2. الشرائح المستهدفة</h2>
+            <div class="grid-4">
+                <div class="segment">
+                    <h3>المستخدم المجرب</h3>
+                    <ul class="subtle-list">
+                        <li>يريد تجربة المنتج بسرعة</li>
+                        <li>يهتم بالشات والكتابة أولًا</li>
+                        <li>غير مستعد لدفع كبير من البداية</li>
+                    </ul>
+                </div>
+                <div class="segment">
+                    <h3>صانع المحتوى الفردي</h3>
+                    <ul class="subtle-list">
+                        <li>يحتاج كتابة أسرع وقوالب</li>
+                        <li>يريد بعض الصور</li>
+                        <li>قد يستخدم أدوات سوشال بشكل بسيط</li>
+                    </ul>
+                </div>
+                <div class="segment">
+                    <h3>المسوق المحترف</h3>
+                    <ul class="subtle-list">
+                        <li>ينتج محتوى بشكل مستمر</li>
+                        <li>يحتاج صورًا أكثر</li>
+                        <li>يريد أدوات سوشال وأتمتة أوضح</li>
+                    </ul>
+                </div>
+                <div class="segment">
+                    <h3>الوكالة / فريق الأعمال</h3>
+                    <ul class="subtle-list">
+                        <li>يحتاج استخدامًا عاليًا</li>
+                        <li>يدير أكثر من عميل أو مشروع</li>
+                        <li>يهتم بالتشغيل والقياس والتوسع</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <section class="note">
+            <h3>ملاحظة استراتيجية</h3>
+            <p class="muted">
+                أفضل إطلاق تجاري لمنصتك ليس “منصة كل شيء غير محدود”، بل منصة تبدأ بقيمة قوية في
+                المحتوى والسوشال والصور، ثم تُفصل المزايا الأعلى تكلفة مثل الفيديو والوكلاء المتقدمين
+                كخطط أعلى أو إضافات مدفوعة.
+            </p>
+        </section>
+
+        <section class="section">
+            <h2>3. الهيكل المقترح للباقات</h2>
+            <div class="grid-4">
+                <article class="package-card">
+                    <div class="package-head">
+                        <div>
+                            <p class="package-name">Free</p>
+                            <p class="muted">بوابة التجربة الأولى</p>
+                        </div>
+                        <span class="badge good">جذب وتجربة</span>
+                    </div>
+                    <div class="price">0 <small>ريال / شهر</small></div>
+                    <ul class="subtle-list">
+                        <li>شات أساسي</li>
+                        <li>كتابة أساسية</li>
+                        <li>قوالب محدودة جدًا</li>
+                        <li>صور قليلة</li>
+                        <li>مستندات محدودة</li>
+                    </ul>
+                    <p class="muted">الهدف التجاري: التحويل إلى Creator.</p>
+                </article>
+
+                <article class="package-card highlight">
+                    <div class="package-head">
+                        <div>
+                            <p class="package-name">Creator</p>
+                            <p class="muted">الأفراد وصناع المحتوى</p>
+                        </div>
+                        <span class="badge primary">الأكثر شعبية مبدئيًا</span>
+                    </div>
+                    <div class="price">79 - 99 <small>ريال / شهر</small></div>
+                    <ul class="subtle-list">
+                        <li>AI Writing وAI Chat</li>
+                        <li>مستندات وقوالب</li>
+                        <li>صور أساسية / متوسطة</li>
+                        <li>بداية دخول للسوشال</li>
+                        <li>توليد محدود لمحتوى السوشال</li>
+                    </ul>
+                    <p class="muted">الهدف التجاري: باقة الأفراد الأساسية وبداية الإيراد الشهري.</p>
+                </article>
+
+                <article class="package-card">
+                    <div class="package-head">
+                        <div>
+                            <p class="package-name">Pro</p>
+                            <p class="muted">المحترفون والمتاجر</p>
+                        </div>
+                        <span class="badge primary">مركز الربحية</span>
+                    </div>
+                    <div class="price">199 - 299 <small>ريال / شهر</small></div>
+                    <ul class="subtle-list">
+                        <li>كل ما في Creator</li>
+                        <li>حدود أعلى للنص والصور</li>
+                        <li>سوشال أوضح</li>
+                        <li>Social Media Agent أساسي</li>
+                        <li>Marketing Bot بشكل مقيد</li>
+                    </ul>
+                    <p class="muted">الهدف التجاري: باقة المحترفين والمتاجر والفرق الصغيرة.</p>
+                </article>
+
+                <article class="package-card">
+                    <div class="package-head">
+                        <div>
+                            <p class="package-name">Agency</p>
+                            <p class="muted">الوكالات والاستخدام التجاري العالي</p>
+                        </div>
+                        <span class="badge primary">سعة وتشغيل</span>
+                    </div>
+                    <div class="price">499 - 999 <small>ريال / شهر</small></div>
+                    <ul class="subtle-list">
+                        <li>كل ما في Pro</li>
+                        <li>حدود أعلى جدًا</li>
+                        <li>سوشال ووكلاء بشكل أوسع</li>
+                        <li>بعض مزايا الفرق</li>
+                        <li>قابلية للتوسع وإدارة العملاء</li>
+                    </ul>
+                    <p class="muted">الهدف التجاري: رفع متوسط الإيراد لكل عميل دون كسر الهامش.</p>
+                </article>
+            </div>
+        </section>
+
+        <section class="matrix">
+            <h2>4. ملخص سريع للمقارنة بين الباقات</h2>
+            <table>
+                <thead>
+                    <tr>
+                        <th>الباقة</th>
+                        <th>لمن؟</th>
+                        <th>أهم ما تتضمنه</th>
+                        <th>ما لا تتضمنه بالكامل</th>
+                        <th>التسعير</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td data-label="الباقة"><strong>Free</strong></td>
+                        <td data-label="لمن؟">المستخدم المجرب</td>
+                        <td data-label="أهم ما تتضمنه">شات، كتابة، قوالب وصور محدودة</td>
+                        <td data-label="ما لا تتضمنه بالكامل">فيديو، وكلاء، سوشال متقدم، مزايا ثقيلة</td>
+                        <td data-label="التسعير">0 ريال</td>
+                    </tr>
+                    <tr>
+                        <td data-label="الباقة"><strong>Creator</strong></td>
+                        <td data-label="لمن؟">صناع المحتوى والأفراد</td>
+                        <td data-label="أهم ما تتضمنه">كتابة، شات، مستندات، صور أساسية، سوشال بسيط</td>
+                        <td data-label="ما لا تتضمنه بالكامل">فيديو ثقيل، وكلاء متقدمون، إدارة فرق</td>
+                        <td data-label="التسعير">79 - 99 ريال</td>
+                    </tr>
+                    <tr>
+                        <td data-label="الباقة"><strong>Pro</strong></td>
+                        <td data-label="لمن؟">محترفون، متاجر، فرق صغيرة</td>
+                        <td data-label="أهم ما تتضمنه">كل ما في Creator + سوشال أوسع + وكلاء أساسيون</td>
+                        <td data-label="ما لا تتضمنه بالكامل">فيديو غير محدود، مزايا وكالة واسعة</td>
+                        <td data-label="التسعير">199 - 299 ريال</td>
+                    </tr>
+                    <tr>
+                        <td data-label="الباقة"><strong>Agency</strong></td>
+                        <td data-label="لمن؟">وكالات وفرق أعمال</td>
+                        <td data-label="أهم ما تتضمنه">كل ما في Pro + حدود أعلى + إدارة أوسع</td>
+                        <td data-label="ما لا تتضمنه بالكامل">فيديو ثقيل غير محدود</td>
+                        <td data-label="التسعير">499 - 999 ريال</td>
+                    </tr>
+                </tbody>
+            </table>
+        </section>
+
+        <section class="section">
+            <h2>5. ما الذي يبقى خارج الباقات الأساسية؟</h2>
+            <div class="grid-3">
+                <div class="addon">
+                    <h3>Video Add-on</h3>
+                    <p class="muted">لأن الفيديو من أعلى المزايا تكلفة، الأفضل ألا يكون مفتوحًا ضمن كل الخطط.</p>
+                    <ul class="subtle-list">
+                        <li>Text to Video</li>
+                        <li>Image to Video</li>
+                        <li>Video to Video</li>
+                        <li>Kling / Veo / Wan والنماذج المكلفة</li>
+                    </ul>
+                </div>
+                <div class="addon">
+                    <h3>Voice Add-on</h3>
+                    <p class="muted">يُفصل عندما تريد بيع القيمة الصوتية دون رفع سعر كل الباقات الأساسية.</p>
+                    <ul class="subtle-list">
+                        <li>TTS عالي الجودة</li>
+                        <li>أصوات متميزة</li>
+                        <li>عمليات صوتية متقدمة</li>
+                    </ul>
+                </div>
+                <div class="addon">
+                    <h3>Usage Add-on</h3>
+                    <p class="muted">مثالي لرفع الإنفاق من العملاء الحاليين بدل إجبارهم على الانتقال الفوري لخطة أعلى.</p>
+                    <ul class="subtle-list">
+                        <li>كلمات إضافية</li>
+                        <li>صور إضافية</li>
+                        <li>دقائق أو ثواني فيديو إضافية</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <section class="section">
+            <h2>6. ما الذي يظهر لكل خطة؟</h2>
+            <div class="grid-2">
+                <div class="rule">
+                    <h3>Free</h3>
+                    <ul class="subtle-list">
+                        <li>يظهر له: الكتابة الأساسية، الشات، بعض القوالب، صور محدودة</li>
+                        <li>يُخفى عنه: الفيديو، الوكلاء، السوشال المتقدم، الإضافات الثقيلة</li>
+                    </ul>
+                </div>
+                <div class="rule">
+                    <h3>Creator</h3>
+                    <ul class="subtle-list">
+                        <li>يظهر له: أدوات المحتوى الأساسية، الصور الأساسية، بعض أدوات السوشال</li>
+                        <li>يُخفى عنه: الوكلاء المتقدمون، الفيديو الثقيل، مزايا الفرق</li>
+                    </ul>
+                </div>
+                <div class="rule">
+                    <h3>Pro</h3>
+                    <ul class="subtle-list">
+                        <li>يظهر له: المحتوى، السوشال، بعض الوكلاء، بعض الأتمتة</li>
+                        <li>يظهر له أيضًا خيار شراء Add-ons عند الحاجة</li>
+                    </ul>
+                </div>
+                <div class="rule">
+                    <h3>Agency</h3>
+                    <ul class="subtle-list">
+                        <li>يظهر له: أغلب الأدوات، حدود أعلى، إدارة أوسع</li>
+                        <li>يبقى الفيديو الثقيل المقصود كإضافة أو ضمن حدود واضحة</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <section class="section">
+            <h2>7. ماذا يجب ربطه بالخطة داخل المنصة؟</h2>
+            <div class="grid-3">
+                <div class="rule">
+                    <h3>الظهور</h3>
+                    <p class="muted">هل تظهر الميزة أصلًا للمستخدم في القوائم والواجهة؟</p>
+                </div>
+                <div class="rule">
+                    <h3>الوصول</h3>
+                    <p class="muted">إذا عرف المستخدم الرابط، هل يُسمح له بالدخول أم لا؟</p>
+                </div>
+                <div class="rule">
+                    <h3>الاستهلاك</h3>
+                    <p class="muted">إذا دخل واستخدم الميزة، هل يملك خطة تسمح؟ وهل لديه رصيد أو حد متاح؟</p>
+                </div>
+            </div>
+
+            <div class="kpi">
+                <div class="kpi-card">
+                    <strong>1</strong>
+                    لا يكفي أن نخفي الميزة بصريًا فقط.
+                </div>
+                <div class="kpi-card">
+                    <strong>2</strong>
+                    لا يكفي أن نمنع الوصول بدون ضبط الواجهة.
+                </div>
+                <div class="kpi-card">
+                    <strong>3</strong>
+                    لا يكفي السماح بالاستخدام بدون حدود استهلاك.
+                </div>
+                <div class="kpi-card">
+                    <strong>4</strong>
+                    التطبيق الصحيح يحتاج الطبقات الثلاث معًا.
+                </div>
+            </div>
+        </section>
+
+        <section class="launch">
+            <h2>8. التدرج المقترح في الإطلاق</h2>
+            <div class="grid-3">
+                <div class="phase">
+                    <h3>المرحلة الأولى</h3>
+                    <ul class="subtle-list">
+                        <li>إطلاق Free</li>
+                        <li>إطلاق Creator</li>
+                        <li>إطلاق Pro</li>
+                        <li>تأجيل Agency إذا أردت تبسيط البداية</li>
+                    </ul>
+                </div>
+                <div class="phase">
+                    <h3>المرحلة الثانية</h3>
+                    <ul class="subtle-list">
+                        <li>إطلاق Agency</li>
+                        <li>توسيع Social Media Agent</li>
+                        <li>توسيع Marketing Bot حسب الخطة</li>
+                    </ul>
+                </div>
+                <div class="phase">
+                    <h3>المرحلة الثالثة</h3>
+                    <ul class="subtle-list">
+                        <li>إطلاق Video Add-on</li>
+                        <li>إطلاق Voice Add-on</li>
+                        <li>إطلاق Advanced Agent Add-ons</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <section class="decision">
+            <h2>9. القرار النهائي المقترح</h2>
+            <p>
+                إذا أردت هيكلة نظيفة وقابلة للنمو، فالصيغة الأنسب لبداية Boud AI هي:
+            </p>
+            <ul class="subtle-list">
+                <li><strong>Free</strong> = تجربة</li>
+                <li><strong>Creator</strong> = أفراد وصناع محتوى</li>
+                <li><strong>Pro</strong> = محترفون ومتاجر وفرق صغيرة</li>
+                <li><strong>Agency</strong> = وكالات واستخدام تجاري أوسع</li>
+                <li><strong>Add-ons</strong> = فيديو، صوت، واستهلاك إضافي</li>
+            </ul>
+            <p class="muted">
+                أهم قاعدة: لا تجعل كل المزايا ضمن الباقة نفسها. وزّع القيمة بذكاء بين الخطة الأساسية
+                والخطط الأعلى والإضافات المدفوعة، حتى تحافظ على الربحية وتُبقي التسعير مفهومًا.
+            </p>
+        </section>
+
+        <p class="footer">
+            الملف التالي الأفضل بعد هذا: تحويل هذه الهيكلة إلى جدول باقات نهائي مربوط بمزايا المشروع الحالية واحدًا واحدًا.
+        </p>
+    </div>
+</body>
+</html>

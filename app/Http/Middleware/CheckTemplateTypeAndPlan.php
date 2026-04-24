@@ -61,14 +61,27 @@ class CheckTemplateTypeAndPlan
             'dashboard.user.social-media.calendar'       => 'ext_social_media_dropdown',
             'dashboard.user.ai-music-pro.index'          => 'ext_ai_music_pro',
             'dashboard.user.ai-presentation.index'       => 'ai_presentation',
+            'dashboard.user.marketing-bot.dashboard'     => 'marketing_bot_dashboard',
         ];
 
         // Wildcard route prefixes mapped to slugs
         $wildcardRoutes = [
-            'dashboard.user.fashion-studio.' => 'ext_fashion_studio_dropdown',
-            'dashboard.user.ai-image-pro.'   => 'ai_image_pro',
-            'ai-image-pro.'                  => 'ai_image_pro',
-            'ai-chat-image.'                 => 'ai_chat_pro_image_chat',
+            'dashboard.user.fashion-studio.'             => 'ext_fashion_studio_dropdown',
+            'dashboard.user.ai-image-pro.'               => 'ai_image_pro',
+            'dashboard.user.social-media.agent.'         => 'ext_social_media_agent_dropdown',
+            'dashboard.user.blogpilot.agent.'            => 'ext_blogpilot_dropdown',
+            'dashboard.user.marketing-bot.inbox.'        => 'marketing_bot_inbox',
+            'dashboard.user.marketing-bot.settings.'     => 'marketing_bot_settings',
+            'dashboard.user.marketing-bot.train.'        => 'marketing_bot',
+            'dashboard.user.marketing-bot.telegram-campaign.' => 'marketing_bot_telegram',
+            'dashboard.user.marketing-bot.telegram-group.' => 'marketing_bot_telegram',
+            'dashboard.user.marketing-bot.telegram-subscriber.' => 'marketing_bot_telegram',
+            'dashboard.user.marketing-bot.whatsapp-campaign.' => 'marketing_bot_whatsapp',
+            'dashboard.user.marketing-bot.contact.'      => 'marketing_bot_whatsapp',
+            'dashboard.user.marketing-bot.segment.'      => 'marketing_bot_whatsapp',
+            'dashboard.user.marketing-bot.contact-list.' => 'marketing_bot_whatsapp',
+            'ai-image-pro.'                              => 'ai_image_pro',
+            'ai-chat-image.'                             => 'ai_chat_pro_image_chat',
         ];
 
         $slugsToSkip = ['ai_realtime_voice_chat'];
@@ -111,7 +124,29 @@ class CheckTemplateTypeAndPlan
             return ! ($isPremium === 1 || $isAccessTypePremium);
         }
         // now even if slug exist in route, openai table does not contain all slugs
-        $slugsNotInOpenAiGenerator = ['ai_image_pro', 'ai_chat_pro_image_chat', 'ext_fashion_studio_dropdown', 'ai_chat_all', 'ai_editor', 'ai_writer', 'ai_social_media_extension', 'ext_chat_bot', 'brand_voice', 'photo_studio_extension', 'ext_ai_music_pro', 'ai_presentation'];
+        $slugsNotInOpenAiGenerator = [
+            'ai_image_pro',
+            'ai_chat_pro_image_chat',
+            'ext_fashion_studio_dropdown',
+            'ai_chat_all',
+            'ai_editor',
+            'ai_writer',
+            'ai_social_media_extension',
+            'ext_chat_bot',
+            'brand_voice',
+            'photo_studio_extension',
+            'ext_ai_music_pro',
+            'ai_presentation',
+            'ext_social_media_agent_dropdown',
+            'ext_blogpilot_dropdown',
+            'marketing_bot',
+            'marketing_bot_dashboard',
+            'marketing_bot_settings',
+            'marketing_bot_inbox',
+            'marketing_bot_campaigns',
+            'marketing_bot_telegram',
+            'marketing_bot_whatsapp',
+        ];
         // if openai record exist or slug is in the list of slugs that are not in openai generator
         if ($openAi || in_array($slug, $slugsNotInOpenAiGenerator, true)) {
             $setting = $this->settingSlug($slug);

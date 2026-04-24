@@ -4615,6 +4615,9 @@ class MenuService
             'ai_code_generator', 'ai_youtube', 'ai_chat_image', 'ai_rss', 'ai_voiceover_clone', 'ai_web_chat_extension', 'ai_presentation', 'ext_fashion_studio_dropdown',
             'ai_realtime_voice_chat', 'ai_social_media_extension', 'ai_detector_extension', 'ai_plagiarism_extension', 'ai_article_wizard', 'ai_voice_isolator', 'ext_chat_bot', 'ext_voice_chatbot', 'ext_social_media_dropdown',
             'ext_ai_music_pro', 'ai_influencer', 'creative_suite', 'url_to_video', 'viral_clips', 'influencer_avatar', 'brand_voice', 'support', 'ai_chat_pro_image_chat', 'ai_image_pro',
+            'ext_social_media_agent_dropdown', 'ext_blogpilot_dropdown',
+            'marketing_bot', 'marketing_bot_dashboard', 'marketing_bot_settings', 'marketing_bot_inbox',
+            'marketing_bot_campaigns', 'marketing_bot_telegram', 'marketing_bot_whatsapp',
         ];
 
         $data = (new self)->generate();

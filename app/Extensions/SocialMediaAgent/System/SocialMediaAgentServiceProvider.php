@@ -23,6 +23,7 @@ use App\Extensions\SocialMediaAgent\System\Http\Controllers\SocialMediaAgentCont
 use App\Extensions\SocialMediaAgent\System\Http\Controllers\SocialMediaAgentPostController;
 use App\Extensions\SocialMediaAgent\System\Models\SocialMediaAgent;
 use App\Extensions\SocialMediaAgent\System\Policies\SocialMediaAgentPolicy;
+use App\Http\Middleware\CheckTemplateTypeAndPlan;
 use Illuminate\Console\Scheduling\Schedule;
 use Illuminate\Contracts\Http\Kernel;
 use Illuminate\Routing\Router;
@@ -121,7 +122,7 @@ class SocialMediaAgentServiceProvider extends ServiceProvider implements Extensi
 
         $this->router()
             ->group([
-                'middleware' => ['web', 'auth'],
+                'middleware' => ['web', 'auth', CheckTemplateTypeAndPlan::class],
             ], function (Router $router) {
                 $router
                     ->name('dashboard.user.social-media.agent.')

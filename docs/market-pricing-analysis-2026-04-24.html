@@ -1,0 +1,476 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>تقرير السوق والتسعير - 24 أبريل 2026</title>
+    <style>
+        :root {
+            --bg: #f6f7fb;
+            --card: #ffffff;
+            --text: #1f2937;
+            --muted: #6b7280;
+            --line: #e5e7eb;
+            --accent: #5b21b6;
+            --accent-soft: #ede9fe;
+            --good: #065f46;
+            --good-soft: #d1fae5;
+            --warn: #92400e;
+            --warn-soft: #fef3c7;
+        }
+
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            margin: 0;
+            font-family: "Segoe UI", Tahoma, Arial, sans-serif;
+            background: linear-gradient(180deg, #fafaff 0%, var(--bg) 100%);
+            color: var(--text);
+            line-height: 1.8;
+        }
+
+        .container {
+            width: min(1100px, calc(100% - 32px));
+            margin: 32px auto 64px;
+        }
+
+        .hero {
+            background: radial-gradient(circle at top right, #ede9fe 0%, #ffffff 45%, #ffffff 100%);
+            border: 1px solid var(--line);
+            border-radius: 24px;
+            padding: 32px;
+            box-shadow: 0 10px 35px rgba(31, 41, 55, 0.06);
+            margin-bottom: 24px;
+        }
+
+        .hero h1 {
+            margin: 0 0 8px;
+            font-size: 36px;
+            line-height: 1.25;
+        }
+
+        .hero p {
+            margin: 0;
+            color: var(--muted);
+            font-size: 17px;
+        }
+
+        .meta {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 12px;
+            margin-top: 20px;
+        }
+
+        .pill {
+            display: inline-flex;
+            align-items: center;
+            padding: 8px 14px;
+            border-radius: 999px;
+            background: var(--accent-soft);
+            color: var(--accent);
+            font-size: 14px;
+            font-weight: 600;
+        }
+
+        .section {
+            background: var(--card);
+            border: 1px solid var(--line);
+            border-radius: 20px;
+            padding: 28px;
+            margin-bottom: 20px;
+            box-shadow: 0 8px 24px rgba(31, 41, 55, 0.04);
+        }
+
+        .section h2 {
+            margin: 0 0 16px;
+            font-size: 28px;
+            line-height: 1.3;
+        }
+
+        .section h3 {
+            margin: 28px 0 12px;
+            font-size: 22px;
+            line-height: 1.4;
+        }
+
+        .section p {
+            margin: 10px 0;
+        }
+
+        ul {
+            margin: 12px 0;
+            padding-right: 22px;
+        }
+
+        li {
+            margin: 8px 0;
+        }
+
+        .callout {
+            padding: 16px 18px;
+            border-radius: 16px;
+            margin: 18px 0;
+            border: 1px solid transparent;
+        }
+
+        .callout.good {
+            background: var(--good-soft);
+            color: var(--good);
+            border-color: #a7f3d0;
+        }
+
+        .callout.warn {
+            background: var(--warn-soft);
+            color: var(--warn);
+            border-color: #fde68a;
+        }
+
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
+            gap: 16px;
+            margin-top: 16px;
+        }
+
+        .card {
+            border: 1px solid var(--line);
+            border-radius: 18px;
+            padding: 18px;
+            background: #fff;
+        }
+
+        .card h4 {
+            margin: 0 0 8px;
+            font-size: 19px;
+        }
+
+        .price {
+            color: var(--accent);
+            font-size: 24px;
+            font-weight: 700;
+            margin: 4px 0 10px;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 16px;
+            overflow: hidden;
+            border-radius: 16px;
+            border: 1px solid var(--line);
+        }
+
+        th, td {
+            padding: 14px 16px;
+            text-align: right;
+            border-bottom: 1px solid var(--line);
+            vertical-align: top;
+        }
+
+        th {
+            background: #faf5ff;
+            color: var(--accent);
+            font-size: 14px;
+        }
+
+        tr:last-child td {
+            border-bottom: none;
+        }
+
+        a {
+            color: var(--accent);
+            text-decoration: none;
+        }
+
+        a:hover {
+            text-decoration: underline;
+        }
+
+        .footer {
+            color: var(--muted);
+            font-size: 14px;
+            text-align: center;
+            margin-top: 18px;
+        }
+
+        @media (max-width: 640px) {
+            .hero h1 {
+                font-size: 28px;
+            }
+
+            .section {
+                padding: 22px;
+            }
+
+            .section h2 {
+                font-size: 24px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <section class="hero">
+            <h1>تقرير السوق والتسعير</h1>
+            <p>دراسة أولية للمنافسين وأسعارهم، مع قراءة عملية لمزودي الذكاء الاصطناعي الموجودين فعليًا داخل مشروعك وتأثيرهم على منطق التسعير.</p>
+            <div class="meta">
+                <span class="pill">24 أبريل 2026</span>
+                <span class="pill">نسخة توضيحية للقرار التجاري</span>
+                <span class="pill">مبنية على مصادر رسمية + قراءة المشروع</span>
+            </div>
+        </section>
+
+        <section class="section">
+            <h2>الملخص التنفيذي</h2>
+            <p>منصتك ليست أداة كتابة فقط، بل منصة AI متعددة الطبقات فيها نص، صور، صوت، فيديو، سوشال ميديا، ووكلاء. لهذا السبب، المنافسون الأقرب لك ليسوا فقط أدوات مثل Jasper أو Copy.ai، بل منصات أقرب إلى Simplified وPredis.ai وWritesonic.</p>
+            <div class="callout good">
+                أهم نتيجة: النص والشات يمكن تسعيرهما بمرونة، لكن الصور والفيديو والصوت تحتاج ضوابط واضحة حتى لا يتآكل هامش الربح.
+            </div>
+            <div class="callout warn">
+                أهم تحذير: لا أنصح بخطة واحدة "كل شيء غير محدود" إذا كانت ستشمل الفيديو والصور premium والوكلاء المتقدمين.
+            </div>
+        </section>
+
+        <section class="section">
+            <h2>المنافسون الأقرب</h2>
+            <div class="grid">
+                <div class="card">
+                    <h4><a href="https://www.jasper.ai/pricing" target="_blank" rel="noopener noreferrer">Jasper</a></h4>
+                    <div class="price">59$ - 69$</div>
+                    <p>تموضعه أعلى نسبيًا وموجه أكثر لفرق التسويق والأعمال.</p>
+                </div>
+                <div class="card">
+                    <h4><a href="https://writesonic.com/pricing" target="_blank" rel="noopener noreferrer">Writesonic</a></h4>
+                    <div class="price">99$ - 499$</div>
+                    <p>قوي كمرجع لأنه يجمع بين الكتابة وSEO وAI search visibility.</p>
+                </div>
+                <div class="card">
+                    <h4><a href="https://support.copy.ai/en/articles/6544134-pricing" target="_blank" rel="noopener noreferrer">Copy.ai</a></h4>
+                    <div class="price">29$ - 249$</div>
+                    <p>يركز على chat + workflows + agents + فرق العمل.</p>
+                </div>
+                <div class="card">
+                    <h4><a href="https://simplified.com/pricing" target="_blank" rel="noopener noreferrer">Simplified</a></h4>
+                    <div class="price">24$ - 399$</div>
+                    <p>أقرب منافس شامل: كتابة + تصميم + فيديو + سوشال.</p>
+                </div>
+                <div class="card">
+                    <h4><a href="https://predis.ai/pricing/" target="_blank" rel="noopener noreferrer">Predis.ai</a></h4>
+                    <div class="price">19$ - 212$</div>
+                    <p>منافس مهم جدًا لو كنت ستتمركز حول السوشال ميديا والفيديو القصير.</p>
+                </div>
+            </div>
+
+            <h3>قراءة سريعة للسوق</h3>
+            <ul>
+                <li>إذا تموضعت كمنصة نص فقط، ستدخل في منافسة سعرية منخفضة.</li>
+                <li>إذا تموضعت كمنصة شاملة، يمكنك دخول نطاق أعلى بكثير في التسعير.</li>
+                <li>كلما زادت الأتمتة والفرق والـagents، زادت قابلية السوق لتقبل باقات أعلى.</li>
+            </ul>
+        </section>
+
+        <section class="section">
+            <h2>جدول مقارنة سريع</h2>
+            <table>
+                <thead>
+                    <tr>
+                        <th>المنافس</th>
+                        <th>التموضع</th>
+                        <th>بداية السعر الظاهر</th>
+                        <th>الملاحظة الأهم</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Jasper</td>
+                        <td>فرق تسويق وأعمال</td>
+                        <td>59$ - 69$ للمقعد</td>
+                        <td>تموضع business أكثر من كونه رخيصًا جماهيريًا</td>
+                    </tr>
+                    <tr>
+                        <td>Writesonic</td>
+                        <td>SEO + AI content + GEO</td>
+                        <td>99$</td>
+                        <td>منصة أوسع من مجرد كتابة</td>
+                    </tr>
+                    <tr>
+                        <td>Copy.ai</td>
+                        <td>GTM + فرق + workflows</td>
+                        <td>29$</td>
+                        <td>يبيع قيمة المنصة لا مجرد الكريدت الخام</td>
+                    </tr>
+                    <tr>
+                        <td>Simplified</td>
+                        <td>شامل: كتابة + تصميم + فيديو + سوشال</td>
+                        <td>24$</td>
+                        <td>مرجع مهم جدًا لنموذجك</td>
+                    </tr>
+                    <tr>
+                        <td>Predis.ai</td>
+                        <td>Social-first</td>
+                        <td>19$</td>
+                        <td>مرجع ممتاز إذا أردت تقسيمًا قويًا للسوشال</td>
+                    </tr>
+                </tbody>
+            </table>
+        </section>
+
+        <section class="section">
+            <h2>المزودون الموجودون فعليًا في مشروعك</h2>
+            <p>من قراءة المشروع نفسه، المنصة مصممة أصلًا لتعمل كموزع قدرات على أكثر من مزود، وليس كمزود واحد فقط. هذا ممتاز تجاريًا، لكنه يجعل التسعير يحتاج ضبطًا أعلى.</p>
+
+            <div class="grid">
+                <div class="card">
+                    <h4>نص وشات</h4>
+                    <p>OpenAI, Gemini, DeepSeek, Anthropic, xAI, OpenRouter, Perplexity</p>
+                </div>
+                <div class="card">
+                    <h4>صور</h4>
+                    <p>OpenAI, Stable Diffusion, fal.ai, Flux, NanoBanana, SeeDream</p>
+                </div>
+                <div class="card">
+                    <h4>صوت</h4>
+                    <p>ElevenLabs, Azure TTS</p>
+                </div>
+                <div class="card">
+                    <h4>فيديو وميديا متقدمة</h4>
+                    <p>Kling, Creatify, Gamma, HeyGen, Synthesia, Topview, AiVideoPro, UrlToVideo</p>
+                </div>
+            </div>
+
+            <h3>أدلة مباشرة من المشروع</h3>
+            <ul>
+                <li><code>config/openai.php</code></li>
+                <li><code>config/gemini.php</code></li>
+                <li><code>config/deepseek.php</code></li>
+                <li><code>config/xai.php</code></li>
+                <li><code>app/Services/Ai/AIImageClient.php</code></li>
+                <li><code>app/Services/Ai/ElevenLabsService.php</code></li>
+                <li><code>app/Domains/Entity/Enums/EntityEnum.php</code></li>
+            </ul>
+        </section>
+
+        <section class="section">
+            <h2>أسعار التشغيل الأهم عندك</h2>
+
+            <h3>OpenAI</h3>
+            <p><a href="https://openai.com/api/pricing/" target="_blank" rel="noopener noreferrer">المصدر الرسمي</a></p>
+            <ul>
+                <li><strong>GPT-5.4</strong>: <code>2.50$ / 1M input</code> و<code>15$ / 1M output</code></li>
+                <li><strong>GPT-5.4 mini</strong>: <code>0.75$ / 1M input</code> و<code>4.50$ / 1M output</code></li>
+                <li><strong>GPT-5.4 nano</strong>: <code>0.20$ / 1M input</code> و<code>1.25$ / 1M output</code></li>
+            </ul>
+
+            <h3>Gemini</h3>
+            <p><a href="https://ai.google.dev/gemini-api/docs/pricing" target="_blank" rel="noopener noreferrer">المصدر الرسمي</a></p>
+            <ul>
+                <li><strong>Gemini 2.5 Pro</strong>: <code>1.25$ / 1M input</code> و<code>10$ / 1M output</code></li>
+                <li><strong>Gemini 2.5 Flash Image</strong>: حوالي <code>0.039$ / image</code> حتى 1024x1024</li>
+                <li><strong>Gemini 2.5 Flash TTS</strong>: <code>0.50$ / 1M input text</code> و<code>10$ / 1M output audio</code></li>
+            </ul>
+
+            <h3>DeepSeek</h3>
+            <p><a href="https://api-docs.deepseek.com/quick_start/pricing/" target="_blank" rel="noopener noreferrer">المصدر الرسمي</a></p>
+            <ul>
+                <li><code>0.028$ / 1M input (cache hit)</code></li>
+                <li><code>0.28$ / 1M input (cache miss)</code></li>
+                <li><code>0.42$ / 1M output</code></li>
+            </ul>
+
+            <h3>Anthropic</h3>
+            <p><a href="https://docs.anthropic.com/en/docs/about-claude/pricing" target="_blank" rel="noopener noreferrer">المصدر الرسمي</a></p>
+            <ul>
+                <li><strong>Claude Sonnet 4</strong>: <code>3$ / 1M input</code> و<code>15$ / 1M output</code></li>
+                <li><strong>Claude Haiku 3.5</strong>: <code>0.80$ / 1M input</code> و<code>4$ / 1M output</code></li>
+            </ul>
+
+            <h3>xAI</h3>
+            <p><a href="https://docs.x.ai/developers/models" target="_blank" rel="noopener noreferrer">المصدر الرسمي</a></p>
+            <ul>
+                <li><strong>Voice realtime</strong>: <code>3$ / hour</code></li>
+                <li><strong>TTS</strong>: <code>4.20$ / 1M characters</code></li>
+                <li><strong>STT</strong>: <code>0.10$ / hour (REST)</code> و<code>0.20$ / hour (Streaming)</code></li>
+                <li><strong>Web Search</strong>: <code>5$ / 1k calls</code></li>
+            </ul>
+
+            <h3>ElevenLabs</h3>
+            <p><a href="https://elevenlabs.io/pricing/api" target="_blank" rel="noopener noreferrer">المصدر الرسمي</a></p>
+            <ul>
+                <li><strong>Flash / Turbo TTS</strong>: <code>0.05$ / 1K characters</code></li>
+                <li><strong>Multilingual v2/v3</strong>: <code>0.10$ / 1K characters</code></li>
+                <li><strong>STT</strong>: <code>0.22$ / hour</code></li>
+                <li><strong>Realtime STT</strong>: <code>0.39$ / hour</code></li>
+            </ul>
+
+            <h3>fal.ai</h3>
+            <p><a href="https://fal.ai/pricing" target="_blank" rel="noopener noreferrer">المصدر الرسمي</a></p>
+            <ul>
+                <li><strong>Seedream V4</strong>: <code>0.03$ / image</code></li>
+                <li><strong>Flux Kontext Pro</strong>: <code>0.04$ / image</code></li>
+                <li><strong>Nanobanana</strong>: <code>0.0398$ / image</code></li>
+                <li><strong>Wan 2.5</strong>: <code>0.05$ / second</code></li>
+                <li><strong>Kling 2.5 Turbo Pro</strong>: <code>0.07$ / second</code></li>
+                <li><strong>Veo 3</strong>: <code>0.40$ / second</code></li>
+            </ul>
+        </section>
+
+        <section class="section">
+            <h2>ماذا يعني هذا لتسعير منصتك؟</h2>
+            <h3>النص والشات</h3>
+            <p>هذا هو الجزء الأسهل في التسعير، لأنك تقدر تبني طبقة اقتصادية باستخدام DeepSeek وGemini Flash/OpenAI mini وClaude Haiku.</p>
+
+            <h3>الصور</h3>
+            <p>الصور ليست رخيصة مثل النص، لكنها ما زالت قابلة للضبط. الأفضل إدخالها ضمن quota أو credits بدل فتحها بشكل غير محدود في الباقات المنخفضة.</p>
+
+            <h3>الفيديو</h3>
+            <p>هذا أخطر محور من ناحية الربحية. مثال تقريبي:</p>
+            <ul>
+                <li>فيديو 10 ثواني على <strong>Wan 2.5</strong>: حوالي <code>0.50$</code></li>
+                <li>فيديو 10 ثواني على <strong>Kling</strong>: حوالي <code>0.70$</code></li>
+                <li>فيديو 10 ثواني على <strong>Veo 3</strong>: حوالي <code>4$</code></li>
+            </ul>
+
+            <div class="callout warn">
+                إذا فتحت الفيديو الحر لكل المستخدمين ضمن باقة منخفضة، فغالبًا ستخسر أو سيختفي هامش الربح بسرعة.
+            </div>
+        </section>
+
+        <section class="section">
+            <h2>الاستنتاج النهائي</h2>
+            <ul>
+                <li>السوق يقبل باقات منخفضة نسبيًا إذا كانت محدودة بوضوح.</li>
+                <li>السوق يقبل باقات أعلى بكثير إذا كانت المنصة شاملة أو موجهة لفرق العمل.</li>
+                <li>مشروعك قوي ويستحق تموضعًا أعلى من "أداة كتابة"، لكن يجب عزل المزايا الثقيلة عن الخطط الرخيصة.</li>
+            </ul>
+
+            <div class="callout good">
+                التوصية العملية القادمة: بناء خطط منفصلة أو شبه منفصلة للنص، الصور، الفيديو، والسوشال، بدل دمج كل شيء في خطة واحدة غير محدودة.
+            </div>
+        </section>
+
+        <section class="section">
+            <h2>توصية المرحلة القادمة</h2>
+            <p>الخطوة المنطقية التالية ليست إضافة مزودين أو حذفهم، بل تحديد هيكل الخطط نفسه. اقتراح مبدئي مناسب لمنصتك:</p>
+            <ul>
+                <li><strong>Free</strong></li>
+                <li><strong>Creator</strong></li>
+                <li><strong>Pro</strong></li>
+                <li><strong>Agency</strong></li>
+            </ul>
+            <p>ثم نربط داخل كل خطة:</p>
+            <ul>
+                <li>ما الذي يظهر للمستخدم</li>
+                <li>ما الذي يُسمح له باستخدامه</li>
+                <li>ما الذي يكون مقيدًا بكريدت أو بحدود استخدام</li>
+            </ul>
+        </section>
+
+        <div class="footer">
+            تم إعداد هذا الملف داخل المشروع لتسهيل الرجوع إليه وتطويره لاحقًا.
+        </div>
+    </div>
+</body>
+</html>
